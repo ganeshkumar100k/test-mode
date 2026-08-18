@@ -28,7 +28,6 @@
         }
     </script>
     <style>
-        /* Colorful Glowing Background Gradient */
         .hero-bg {
             background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #1e40af 70%, #0d9488 100%);
         }
@@ -99,7 +98,6 @@
     <header class="bg-white/95 backdrop-blur-md shadow-lg shadow-blue-900/5 sticky top-0 z-40 border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3.5 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <!-- Vector Emblem Logo -->
                 <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-900 via-blue-900 to-indigo-950 border-2 border-amber-400 flex items-center justify-center p-1 shadow-lg shadow-blue-600/20 transform hover:rotate-3 transition duration-300">
                     <svg viewBox="0 0 200 200" class="w-full h-full">
                         <circle cx="100" cy="100" r="95" fill="#0f172a" stroke="#f59e0b" stroke-width="6"/>
@@ -116,7 +114,7 @@
                     <h1 class="text-xl md:text-2xl font-black bg-gradient-to-r from-blue-700 via-indigo-600 to-pink-600 bg-clip-text text-transparent leading-tight tracking-tight">
                         GANESH DIGITAL WORLD
                     </h1>
-                    <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Fast Cyber Cafe & Online Seva Portal</p>
+                    <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Online Seva, Certificates & Cyber Portal</p>
                 </div>
             </div>
             
@@ -155,7 +153,6 @@
 
     <!-- Colorful Hero Section -->
     <section class="hero-bg text-white py-12 px-4 relative overflow-hidden shadow-2xl">
-        <!-- Background Glowing Circles -->
         <div class="absolute -top-24 -left-24 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -180,7 +177,7 @@
                 </div>
             </div>
 
-            <!-- Colorful Highlight Badges -->
+            <!-- Highlights -->
             <div class="grid grid-cols-2 gap-4 w-full md:w-auto">
                 <div class="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-lg p-4 rounded-2xl border border-white/20 text-center shadow-lg transform hover:scale-105 transition">
                     <div class="w-12 h-12 mx-auto bg-amber-400/20 rounded-xl flex items-center justify-center text-amber-300 text-2xl mb-2">
@@ -217,7 +214,7 @@
     <!-- Main Content Area -->
     <main class="max-w-7xl mx-auto px-4 py-10 flex-grow space-y-12">
 
-        <!-- 3 Main Action Grid (Result | Admit Card | Latest Jobs) -->
+        <!-- 3 Main Action Grid -->
         <section id="jobs-section" class="scroll-mt-24">
             <div class="flex items-center justify-between mb-6">
                 <div>
@@ -233,34 +230,25 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Result Box -->
                 <div class="bg-white rounded-2xl shadow-md border-2 border-red-100 overflow-hidden flex flex-col card-glow transition duration-300">
                     <div class="bg-gradient-to-r from-red-600 to-rose-600 text-white p-3.5 font-bold text-center text-base flex items-center justify-center shadow-sm">
                         <i class="fa-solid fa-square-poll-vertical mr-2 text-lg"></i> RESULT
                     </div>
-                    <ul id="resultsContainer" class="divide-y divide-slate-100 flex-grow text-sm">
-                        <!-- Dynamically Rendered via posts.js -->
-                    </ul>
+                    <ul id="resultsContainer" class="divide-y divide-slate-100 flex-grow text-sm"></ul>
                 </div>
 
-                <!-- Admit Card Box -->
                 <div class="bg-white rounded-2xl shadow-md border-2 border-blue-100 overflow-hidden flex flex-col card-glow transition duration-300">
                     <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-3.5 font-bold text-center text-base flex items-center justify-center shadow-sm">
                         <i class="fa-solid fa-address-card mr-2 text-lg"></i> ADMIT CARD
                     </div>
-                    <ul id="admitCardsContainer" class="divide-y divide-slate-100 flex-grow text-sm">
-                        <!-- Dynamically Rendered via posts.js -->
-                    </ul>
+                    <ul id="admitCardsContainer" class="divide-y divide-slate-100 flex-grow text-sm"></ul>
                 </div>
 
-                <!-- Latest Jobs Box -->
                 <div class="bg-white rounded-2xl shadow-md border-2 border-emerald-100 overflow-hidden flex flex-col card-glow transition duration-300">
                     <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white p-3.5 font-bold text-center text-base flex items-center justify-center shadow-sm">
                         <i class="fa-solid fa-briefcase mr-2 text-lg"></i> LATEST JOBS
                     </div>
-                    <ul id="latestJobsContainer" class="divide-y divide-slate-100 flex-grow text-sm">
-                        <!-- Dynamically Rendered via posts.js -->
-                    </ul>
+                    <ul id="latestJobsContainer" class="divide-y divide-slate-100 flex-grow text-sm"></ul>
                 </div>
             </div>
         </section>
@@ -276,8 +264,6 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                
-                <!-- Residence -->
                 <div class="bg-gradient-to-b from-white to-amber-50/40 p-5 rounded-2xl border-2 border-amber-200/80 shadow-md card-glow transition duration-300 flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 text-slate-950 rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-amber-500/20">
@@ -291,7 +277,6 @@
                     </button>
                 </div>
 
-                <!-- Caste -->
                 <div class="bg-gradient-to-b from-white to-blue-50/40 p-5 rounded-2xl border-2 border-blue-200/80 shadow-md card-glow transition duration-300 flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-blue-500/20">
@@ -305,7 +290,6 @@
                     </button>
                 </div>
 
-                <!-- Income -->
                 <div class="bg-gradient-to-b from-white to-emerald-50/40 p-5 rounded-2xl border-2 border-emerald-200/80 shadow-md card-glow transition duration-300 flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-emerald-500/20">
@@ -319,7 +303,6 @@
                     </button>
                 </div>
 
-                <!-- Other -->
                 <div class="bg-gradient-to-b from-white to-purple-50/40 p-5 rounded-2xl border-2 border-purple-200/80 shadow-md card-glow transition duration-300 flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-purple-500/20">
@@ -332,7 +315,6 @@
                         Apply Other →
                     </button>
                 </div>
-
             </div>
         </section>
 
@@ -343,12 +325,10 @@
                     <span class="w-3 h-8 bg-gradient-to-b from-emerald-500 to-teal-500 rounded-full inline-block"></span>
                     ID Card & Digital Identity Services
                 </h3>
-                <p class="text-xs text-slate-500 ml-5">PAN Card, Voter ID, Aadhaar & Labour Cards</p>
+                <p class="text-xs text-slate-500 ml-5">PAN Card, Voter ID, Identification & Labour Cards</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-
-                <!-- PAN -->
                 <div class="bg-gradient-to-b from-white to-indigo-50/40 p-5 rounded-2xl border-2 border-indigo-200/80 shadow-md card-glow transition duration-300 flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 bg-gradient-to-br from-indigo-600 to-violet-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-indigo-500/20">
@@ -362,7 +342,6 @@
                     </button>
                 </div>
 
-                <!-- Voter -->
                 <div class="bg-gradient-to-b from-white to-cyan-50/40 p-5 rounded-2xl border-2 border-cyan-200/80 shadow-md card-glow transition duration-300 flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-cyan-500/20">
@@ -376,21 +355,19 @@
                     </button>
                 </div>
 
-                <!-- Aadhaar -->
                 <div class="bg-gradient-to-b from-white to-amber-50/40 p-5 rounded-2xl border-2 border-amber-200/80 shadow-md card-glow transition duration-300 flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-yellow-500 text-slate-950 rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-amber-500/20">
                             <i class="fa-solid fa-fingerprint"></i>
                         </div>
-                        <h4 class="font-extrabold text-slate-900 text-base mb-1">Aadhaar Services</h4>
-                        <p class="text-xs text-slate-600 font-medium mb-4">Address Correction & Print / आधार सुधार</p>
+                        <h4 class="font-extrabold text-slate-900 text-base mb-1">Identification Services</h4>
+                        <p class="text-xs text-slate-600 font-medium mb-4">Address Correction & Print / डिजिटल पहचान सेवा</p>
                     </div>
                     <button onclick="openApplyModal('aadhaar')" class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-slate-950 font-bold text-xs py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02]">
-                        Update Aadhaar →
+                        Update Details →
                     </button>
                 </div>
 
-                <!-- Ayushman -->
                 <div class="bg-gradient-to-b from-white to-rose-50/40 p-5 rounded-2xl border-2 border-rose-200/80 shadow-md card-glow transition duration-300 flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 bg-gradient-to-br from-rose-500 to-pink-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-rose-500/20">
@@ -403,11 +380,10 @@
                         Apply Ayushman →
                     </button>
                 </div>
-
             </div>
         </section>
 
-        <!-- Colorful Scholarship Banner -->
+        <!-- Scholarship Banner -->
         <section id="scholarship-section" class="scroll-mt-24">
             <div class="bg-gradient-to-r from-indigo-950 via-purple-900 to-pink-900 text-white rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden border border-purple-500/30">
                 <div class="absolute -right-10 -bottom-10 w-72 h-72 bg-pink-500/20 rounded-full blur-2xl"></div>
@@ -432,7 +408,7 @@
 
     </main>
 
-    <!-- Colorful Footer -->
+    <!-- Footer -->
     <footer class="bg-slate-950 text-slate-300 text-xs py-10 px-4 mt-auto border-t border-slate-800">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-800/80">
             <div>
@@ -474,15 +450,15 @@
         </div>
     </footer>
 
-    <!-- Universal Dynamic Apply Modal Shell -->
+    <!-- Universal Single Complete Application Modal -->
     <div id="applyModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
         <div class="bg-white rounded-3xl shadow-2xl w-full max-w-2xl my-8 overflow-hidden flex flex-col max-h-[92vh] border border-slate-200">
             
-            <!-- Modal Colorful Header -->
+            <!-- Modal Header -->
             <div class="bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-800 text-white p-5 flex justify-between items-center shrink-0 shadow-md">
                 <div>
                     <h3 id="modalTitle" class="font-extrabold text-lg text-white">Online Service Application</h3>
-                    <p id="modalSubTitle" class="text-xs text-blue-200">Ganesh Digital World Official Portal</p>
+                    <p id="modalSubTitle" class="text-xs text-blue-200">Fill Details, Upload Documents & Pay in One Form</p>
                 </div>
                 <button onclick="closeApplyModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition">
                     <i class="fa-solid fa-xmark text-lg"></i>
@@ -491,94 +467,96 @@
 
             <div class="p-6 overflow-y-auto flex-grow space-y-6">
 
-                <!-- Dynamic Inline Validation Notice Banner -->
+                <!-- Inline Validation Error Banner -->
                 <div id="modalNotice" class="hidden bg-rose-50 border-2 border-rose-300 text-rose-800 text-xs p-3.5 rounded-xl flex items-center justify-between shadow-sm">
                     <div class="flex items-center gap-2">
                         <i class="fa-solid fa-circle-exclamation text-rose-500 text-base"></i>
-                        <span id="modalNoticeText" class="font-bold">Please fill in all required fields.</span>
+                        <span id="modalNoticeText" class="font-bold">Please fill in all required fields accurately.</span>
                     </div>
                     <button type="button" onclick="hideNotice()" class="text-rose-500 font-bold ml-2">✕</button>
                 </div>
-                
-                <!-- Sequential Step Indicator -->
-                <div class="flex items-center justify-between text-xs font-bold text-slate-400 border-b border-slate-100 pb-3">
-                    <span id="stepBadge1" class="text-blue-600 border-b-2 border-blue-600 pb-1">1. Fill Details</span>
-                    <span id="stepBadge2">2. Upload Documents</span>
-                    <span id="stepBadge3">3. Review Bill & Pay</span>
-                </div>
 
-                <form id="onlineAppForm" onsubmit="handleFormSubmit(event)">
+                <form id="onlineAppForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
 
-                    <!-- STEP 1: Dynamically Injected from posts.js -->
-                    <div id="step1" class="space-y-4">
-                        <div>
-                            <label class="block text-xs font-extrabold text-slate-700 mb-1">Select Service / सेवा चुनें *</label>
-                            <select id="serviceSelect" onchange="renderDynamicFormByService()" class="w-full text-xs p-3 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:ring-0 focus:outline-none font-semibold bg-slate-50" required>
-                                <option value="pan">New PAN Card or Correction / नया पैन कार्ड या सुधार</option>
-                                <option value="residence">Residence Certificate / निवास प्रमाण पत्र (RTPS)</option>
-                                <option value="caste">Caste Certificate / जाति प्रमाण पत्र (RTPS)</option>
-                                <option value="income">Income Certificate / आय प्रमाण पत्र (RTPS)</option>
-                                <option value="voter">Voter ID Card / मतदाता पहचान पत्र (Form 6/8)</option>
-                                <option value="aadhaar">Aadhaar Services / आधार सुधार व प्रिंट</option>
-                                <option value="ayushman">Ayushman / E-Shram Card / आयुष्मान कार्ड</option>
-                                <option value="scholarship">Scholarship Application / छात्रवृत्ति आवेदन फॉर्म</option>
-                                <option value="job">Farmer Registration & Job Form / सरकारी फॉर्म</option>
-                                <option value="other_cert">Other Digital Service / अन्य डिजिटल सेवा</option>
-                            </select>
-                        </div>
+                    <!-- Service Selector -->
+                    <div>
+                        <label class="block text-xs font-extrabold text-slate-700 mb-1">Select Service / सेवा चुनें *</label>
+                        <select id="serviceSelect" onchange="renderDynamicFormByService()" class="w-full text-xs p-3 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:ring-0 focus:outline-none font-semibold bg-slate-50" required>
+                            <option value="pan">New PAN Card or Correction / नया पैन कार्ड या सुधार</option>
+                            <option value="residence">Residence Certificate / निवास प्रमाण पत्र (RTPS)</option>
+                            <option value="caste">Caste Certificate / जाति प्रमाण पत्र (RTPS)</option>
+                            <option value="income">Income Certificate / आय प्रमाण पत्र (RTPS)</option>
+                            <option value="voter">Voter ID Card / मतदाता पहचान पत्र (Form 6/8)</option>
+                            <option value="aadhaar">Identity & Aadhaar Services / पहचान सेवा व प्रिंट</option>
+                            <option value="ayushman">Ayushman / E-Shram Card / आयुष्मान कार्ड</option>
+                            <option value="scholarship">Scholarship Application / छात्रवृत्ति आवेदन फॉर्म</option>
+                            <option value="job">Farmer Registration & Job Form / सरकारी फॉर्म</option>
+                            <option value="other_cert">Other Digital Service / अन्य डिजिटल सेवा</option>
+                        </select>
+                    </div>
 
-                        <!-- Dynamic Specific Fields Container -->
+                    <!-- 1. PERSONAL & ADDRESS DETAILS SECTION -->
+                    <div class="border-t border-slate-200 pt-4">
+                        <h4 class="text-xs font-black text-slate-800 uppercase tracking-wider mb-3 flex items-center gap-1.5 text-blue-700">
+                            <i class="fa-solid fa-user-pen"></i> 1. Applicant & Address Details (विवरण)
+                        </h4>
                         <div id="dynamicFormFieldsContainer" class="space-y-3">
                             <!-- Injected by posts.js -->
                         </div>
-
-                        <button type="button" onclick="validateStep1AndNext()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 rounded-xl text-xs mt-4 shadow-lg shadow-blue-500/25 transition transform hover:scale-[1.01]">
-                            Next: Upload Documents →
-                        </button>
                     </div>
 
-                    <!-- STEP 2: Document Upload -->
-                    <div id="step2" class="space-y-4 hidden">
-                        <div class="bg-amber-50 border border-amber-200 text-amber-900 text-xs p-3.5 rounded-xl font-medium flex items-center gap-2">
-                            <i class="fa-solid fa-cloud-arrow-up text-amber-600 text-lg"></i>
-                            <span>Upload Passport Photo, Signature, Identification Card and Supporting Documents.</span>
-                        </div>
-
+                    <!-- 2. DOCUMENT UPLOADS SECTION -->
+                    <div class="border-t border-slate-200 pt-4">
+                        <h4 class="text-xs font-black text-slate-800 uppercase tracking-wider mb-3 flex items-center gap-1.5 text-indigo-700">
+                            <i class="fa-solid fa-cloud-arrow-up"></i> 2. Upload Required Documents (दस्तावेज अपलोड)
+                        </h4>
                         <div id="dynamicDocumentUploadContainer" class="space-y-3">
                             <!-- Injected by posts.js -->
                         </div>
-
-                        <div class="flex gap-3 pt-4">
-                            <button type="button" onclick="goToStep(1)" class="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-xl text-xs transition">
-                                ← Back
-                            </button>
-                            <button type="button" onclick="validateStep2AndNext()" class="w-2/3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 rounded-xl text-xs shadow-lg shadow-blue-500/25 transition">
-                                Next: Review Bill & Pay →
-                            </button>
-                        </div>
                     </div>
 
-                    <!-- STEP 3: Billing & Payment -->
-                    <div id="step3" class="space-y-4 hidden">
-                        
-                        <!-- Dynamic Billing Card -->
-                        <div class="bg-gradient-to-br from-slate-50 to-blue-50/50 border border-blue-100 p-4 rounded-2xl space-y-2.5 text-xs shadow-inner">
-                            <h4 class="font-extrabold text-slate-800 text-sm border-b border-slate-200 pb-2">Automatic Bill Breakdown</h4>
+                    <!-- 3. BILLING, QR CODE & PAYMENT SECTION -->
+                    <div class="border-t border-slate-200 pt-4 space-y-4">
+                        <h4 class="text-xs font-black text-slate-800 uppercase tracking-wider mb-1 flex items-center gap-1.5 text-emerald-700">
+                            <i class="fa-solid fa-receipt"></i> 3. Fee Breakdown & UPI Payment (भुगतान)
+                        </h4>
+
+                        <!-- Automatic Bill Breakdown Card -->
+                        <div class="bg-gradient-to-br from-slate-50 to-blue-50/50 border border-blue-100 p-4 rounded-2xl space-y-2 text-xs shadow-inner">
                             <div class="flex justify-between text-slate-600">
-                                <span>Government / Portal Charge:</span>
+                                <span>Government Portal Fee:</span>
                                 <span id="billGovtFee" class="font-bold text-slate-800">₹0</span>
                             </div>
                             <div class="flex justify-between text-slate-600">
-                                <span>Cyber Cafe / Processing Fee:</span>
+                                <span>Processing & Cyber Cafe Fee:</span>
                                 <span id="billServiceCharge" class="font-bold text-slate-800">₹30</span>
                             </div>
                             <div class="flex justify-between text-slate-900 font-black text-base border-t border-slate-200 pt-2 text-blue-700">
-                                <span>TOTAL AMOUNT:</span>
-                                <span id="billTotalAmount" class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded-lg">₹30</span>
+                                <span>TOTAL PAYABLE AMOUNT:</span>
+                                <span id="billTotalAmount" class="bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded-lg">₹30</span>
                             </div>
                         </div>
 
-                        <!-- Captcha Verification -->
+                        <!-- UPI QR Code & Direct Apps -->
+                        <div class="p-4 border-2 border-emerald-300 rounded-2xl bg-gradient-to-b from-emerald-50/70 to-teal-50/50 text-center space-y-3">
+                            <p class="text-xs font-bold text-emerald-900">Scan QR Code or Click App to Pay directly via UPI</p>
+                            
+                            <div class="bg-white p-2.5 rounded-2xl inline-block border-2 border-emerald-200 shadow-md">
+                                <img id="paymentQrImage" src="https://quickchart.io/qr?text=upi%3A%2F%2Fpay%3Fpa%3D8252880028%2540jio%26pn%3DGanesh%2520Digital%2520world%26am%3D200%26cu%3DINR&size=200&format=png" alt="Payment QR" class="w-36 h-36 mx-auto rounded-xl object-contain border border-slate-100" />
+                                <p class="text-[11px] font-black text-slate-800 mt-1.5">UPI ID: 8252880028@jio</p>
+                            </div>
+
+                            <div class="flex justify-center gap-3 pt-1">
+                                <a id="gpayBtn" href="#" class="bg-slate-950 hover:bg-slate-800 text-white text-xs px-4 py-2 rounded-xl font-bold flex items-center shadow-md transition">
+                                    <i class="fa-brands fa-google-pay text-lg mr-1.5 text-blue-400"></i> Google Pay
+                                </a>
+                                <a id="phonepeBtn" href="#" class="bg-purple-700 hover:bg-purple-800 text-white text-xs px-4 py-2 rounded-xl font-bold flex items-center shadow-md transition">
+                                    <i class="fa-solid fa-mobile-screen mr-1.5"></i> PhonePe
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Security Captcha Code -->
                         <div class="bg-amber-50/60 p-3.5 rounded-2xl border border-amber-200">
                             <label class="block text-xs font-extrabold text-slate-700 mb-1">Security Captcha Code *</label>
                             <div class="flex items-center space-x-3 mb-2">
@@ -592,63 +570,36 @@
                             <input type="text" id="captchaInput" placeholder="Enter Captcha Code Here" class="w-full text-xs p-2.5 border-2 border-slate-200 rounded-xl uppercase font-bold tracking-widest" required>
                         </div>
 
-                        <!-- Payment & UTR Verification -->
-                        <div class="border-t border-slate-200 pt-3 space-y-3">
-                            <h4 class="text-xs font-extrabold text-slate-800">Payment Gateway Redirection & Verification</h4>
+                        <!-- Payment Verification (12-Digit UTR) -->
+                        <div class="bg-emerald-100/70 p-4 rounded-2xl border border-emerald-300 space-y-2.5">
+                            <label class="block text-xs font-black text-slate-800">
+                                <i class="fa-solid fa-receipt text-emerald-600 mr-1"></i> UPI Transaction ID / UTR Number (12 Digits) *
+                            </label>
+                            <p class="text-[10px] text-slate-600 font-medium">Pay karne ke baad Google Pay / PhonePe se 12-Digit UTR / Ref No. yahan enter karein.</p>
+                            <input type="text" id="paymentUTR" maxlength="20" placeholder="e.g. 423819284712" class="w-full text-xs p-3 border-2 border-emerald-300 rounded-xl bg-white font-mono font-bold uppercase" required>
                             
-                            <div class="p-4 border-2 border-emerald-300 rounded-2xl bg-gradient-to-b from-emerald-50/70 to-teal-50/50 text-center space-y-3">
-                                <p class="text-xs font-bold text-emerald-900">Scan QR Code or Click App to Pay directly via UPI</p>
-                                
-                                <div class="bg-white p-2.5 rounded-2xl inline-block border-2 border-emerald-200 shadow-md">
-                                    <img id="paymentQrImage" src="https://quickchart.io/qr?text=upi%3A%2F%2Fpay%3Fpa%3D8252880028%2540jio%26pn%3DGanesh%2520Digital%2520world%26am%3D200%26cu%3DINR&size=200&format=png" alt="Payment QR" class="w-36 h-36 mx-auto rounded-xl object-contain border border-slate-100" />
-                                    <p class="text-[11px] font-black text-slate-800 mt-1.5">UPI ID: 8252880028@jio</p>
-                                </div>
+                            <label class="flex items-center space-x-2 pt-1 cursor-pointer">
+                                <input type="checkbox" id="paymentConfirmCheck" class="rounded text-blue-600 focus:ring-blue-500 h-4 w-4" required>
+                                <span class="text-[11px] font-bold text-slate-800">I confirm that I have completed the UPI payment for this form. *</span>
+                            </label>
 
-                                <div class="flex justify-center gap-3 pt-1">
-                                    <a id="gpayBtn" href="#" class="bg-slate-950 hover:bg-slate-800 text-white text-xs px-4 py-2 rounded-xl font-bold flex items-center shadow-md transition">
-                                        <i class="fa-brands fa-google-pay text-lg mr-1.5 text-blue-400"></i> Google Pay
-                                    </a>
-                                    <a id="phonepeBtn" href="#" class="bg-purple-700 hover:bg-purple-800 text-white text-xs px-4 py-2 rounded-xl font-bold flex items-center shadow-md transition">
-                                        <i class="fa-solid fa-mobile-screen mr-1.5"></i> PhonePe
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!-- Payment UTR Number -->
-                            <div class="bg-emerald-100/70 p-4 rounded-2xl border border-emerald-300 space-y-2.5">
-                                <label class="block text-xs font-black text-slate-800">
-                                    <i class="fa-solid fa-receipt text-emerald-600 mr-1"></i> UPI Transaction ID / UTR Number (12 Digits) *
-                                </label>
-                                <p class="text-[10px] text-slate-600 font-medium">Pay karne ke baad Google Pay / PhonePe se 12-Digit UTR / Ref No. yahan enter karein.</p>
-                                <input type="text" id="paymentUTR" maxlength="20" placeholder="e.g. 423819284712" class="w-full text-xs p-3 border-2 border-emerald-300 rounded-xl bg-white font-mono font-bold uppercase" required>
-                                
-                                <label class="flex items-center space-x-2 pt-1 cursor-pointer">
-                                    <input type="checkbox" id="paymentConfirmCheck" class="rounded text-blue-600 focus:ring-blue-500 h-4 w-4" required>
-                                    <span class="text-[11px] font-bold text-slate-800">I confirm that I have completed the UPI payment for this form. *</span>
-                                </label>
-
-                                <label class="flex items-start space-x-2 pt-2 cursor-pointer border-t border-emerald-300/60">
-                                    <input type="checkbox" id="termsCheck" class="rounded text-blue-600 focus:ring-blue-500 h-4 w-4 mt-0.5" required>
-                                    <span class="text-[11px] text-slate-700 font-medium">
-                                        I accept the 
-                                        <button type="button" onclick="openPrivacyModal()" class="text-blue-700 font-bold underline">Privacy Policy</button>, 
-                                        <button type="button" onclick="openTermsModal()" class="text-blue-700 font-bold underline">Terms & Conditions</button> 
-                                        and 
-                                        <button type="button" onclick="openDisclaimerModal()" class="text-blue-700 font-bold underline">Disclaimer</button>. *
-                                    </span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="flex gap-3 pt-2">
-                            <button type="button" onclick="goToStep(2)" class="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-xl text-xs transition">
-                                ← Back
-                            </button>
-                            <button type="submit" id="submitBtn" class="w-2/3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-black py-3 rounded-xl text-xs shadow-lg shadow-emerald-500/25 transition flex items-center justify-center">
-                                <i class="fa-solid fa-check-circle mr-1.5 text-base"></i> Submit & Print Receipt
-                            </button>
+                            <label class="flex items-start space-x-2 pt-2 cursor-pointer border-t border-emerald-300/60">
+                                <input type="checkbox" id="termsCheck" class="rounded text-blue-600 focus:ring-blue-500 h-4 w-4 mt-0.5" required>
+                                <span class="text-[11px] text-slate-700 font-medium">
+                                    I accept the 
+                                    <button type="button" onclick="openPrivacyModal()" class="text-blue-700 font-bold underline">Privacy Policy</button>, 
+                                    <button type="button" onclick="openTermsModal()" class="text-blue-700 font-bold underline">Terms & Conditions</button> 
+                                    and 
+                                    <button type="button" onclick="openDisclaimerModal()" class="text-blue-700 font-bold underline">Disclaimer</button>. *
+                                </span>
+                            </label>
                         </div>
                     </div>
+
+                    <!-- Single Submit Button -->
+                    <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 hover:from-emerald-700 hover:to-teal-800 text-white font-black py-3.5 rounded-2xl text-sm shadow-xl shadow-emerald-500/25 transition transform hover:scale-[1.01] flex items-center justify-center">
+                        <i class="fa-solid fa-check-circle mr-2 text-lg"></i> Submit Complete Application & Generate Receipt
+                    </button>
 
                 </form>
             </div>
@@ -750,13 +701,11 @@
             <div class="space-y-3 leading-relaxed text-slate-700">
                 <p><strong>Ganesh Digital World</strong> is committed to protecting your personal data and privacy. This policy outlines how we handle data when you use our Online Digital Seva & Cyber Cafe Portal.</p>
                 <h4 class="font-bold text-slate-900 border-l-4 border-blue-600 pl-2">1. Data Collection & Document Safety</h4>
-                <p>We collect essential information such as Full Name, Father's Name, Contact Number, Address Details, Photograph, Signature, and Supporting Documents strictly required for processing official Government forms (RTPS Bihar, PAN, Voter ID, Scholarship, etc.).</p>
+                <p>We collect essential information strictly required for processing official Government forms (RTPS Bihar, PAN, Voter ID, Scholarship, etc.).</p>
                 <h4 class="font-bold text-slate-900 border-l-4 border-blue-600 pl-2">2. Strict No Third-Party Sharing</h4>
-                <p>Your uploaded documents and personal details are strictly confidential. We NEVER sell, share, or transfer your personal data to any unauthorized third party or marketing entity.</p>
-                <h4 class="font-bold text-slate-900 border-l-4 border-blue-600 pl-2">3. Data Usage Purpose</h4>
-                <p>Data is exclusively used for filling official government portal applications, sending receipts and updates via WhatsApp/Call, and verifying payment transactions.</p>
-                <h4 class="font-bold text-slate-900 border-l-4 border-blue-600 pl-2">4. Support & Grievances</h4>
-                <p>For any privacy concerns or data requests, contact Director Mr. Ganesh Kumar Gond at <strong>8252880028</strong> or via WhatsApp.</p>
+                <p>Your uploaded documents and personal details are strictly confidential. We NEVER sell or share your personal data with third parties.</p>
+                <h4 class="font-bold text-slate-900 border-l-4 border-blue-600 pl-2">3. Support & Grievances</h4>
+                <p>For any privacy concerns, contact Director Mr. Ganesh Kumar Gond at <strong>8252880028</strong>.</p>
             </div>
             <div class="border-t pt-3 flex justify-end">
                 <button onclick="closePrivacyModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition">I Understand & Accept</button>
@@ -772,15 +721,13 @@
                 <button onclick="closeTermsModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="space-y-3 leading-relaxed text-slate-700">
-                <p>By using <strong>Ganesh Digital World Portal</strong> and submitting any application form, you agree to comply with the following terms:</p>
+                <p>By using <strong>Ganesh Digital World Portal</strong>, you agree to the following terms:</p>
                 <h4 class="font-bold text-slate-900 border-l-4 border-amber-500 pl-2">1. Accuracy of Provided Information</h4>
-                <p>The applicant is solely responsible for providing true, accurate, and correct personal details and valid supporting documents. Ganesh Digital World is not liable for form rejection due to incorrect customer details.</p>
-                <h4 class="font-bold text-slate-900 border-l-4 border-amber-500 pl-2">2. Application Fee & Non-Refundable Policy</h4>
-                <p>Once an online application form has been submitted and processing is initiated on official Government / State servers, the service and processing fee is strictly <strong>non-refundable</strong>.</p>
-                <h4 class="font-bold text-slate-900 border-l-4 border-amber-500 pl-2">3. Payment Verification & UTR Mandatory</h4>
-                <p>All online payments must be verified via valid 12-digit UPI UTR / Transaction Reference Number. Forms submitted without valid payment confirmation will be placed on hold.</p>
-                <h4 class="font-bold text-slate-900 border-l-4 border-amber-500 pl-2">4. Government Portal Processing Timelines</h4>
-                <p>Processing times for government certificates (Niwas, Jati, Aay) and services depend on official government timelines (e.g., RTPS Bihar SLAs). Ganesh Digital World acts as an authorized service facilitator and cyber cafe provider.</p>
+                <p>The applicant is solely responsible for providing true and valid details and documents.</p>
+                <h4 class="font-bold text-slate-900 border-l-4 border-amber-500 pl-2">2. Non-Refundable Policy</h4>
+                <p>Once an online application has been processed, the cyber cafe processing fee is strictly non-refundable.</p>
+                <h4 class="font-bold text-slate-900 border-l-4 border-amber-500 pl-2">3. Payment Verification</h4>
+                <p>Valid 12-digit UPI UTR / Transaction Reference Number is mandatory for form processing.</p>
             </div>
             <div class="border-t pt-3 flex justify-end">
                 <button onclick="closeTermsModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition">I Agree to Terms</button>
@@ -796,11 +743,9 @@
                 <button onclick="closeDisclaimerModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="space-y-3 leading-relaxed text-slate-700">
-                <p><strong>Ganesh Digital World</strong> is a digital service cyber cafe portal designed to facilitate online application submissions on behalf of customers for government and academic portals (RTPS Bihar, NSDL/UTIITSL, NVSP, NSP, SSC, etc.).</p>
+                <p><strong>Ganesh Digital World</strong> is a digital cyber cafe portal facilitating online application submissions on behalf of customers for official government and academic portals (RTPS Bihar, PAN, Voter ID, Scholarship, etc.).</p>
                 <h4 class="font-bold text-slate-900 border-l-4 border-purple-500 pl-2">1. Non-Government Entity</h4>
-                <p>We are a private Cyber Cafe & Digital Assistance Center. We do not issue government certificates directly; we only submit applications accurately on official government servers.</p>
-                <h4 class="font-bold text-slate-900 border-l-4 border-purple-500 pl-2">2. Portal Availability & Government Delays</h4>
-                <p>Server downtime, technical maintenance, or verification delays by government departments are beyond our control. We provide tracking assistance and valid acknowledgment tokens for all processed forms.</p>
+                <p>We are a private Cyber Cafe & Digital Assistance Center assisting users in online form submissions.</p>
             </div>
             <div class="border-t pt-3 flex justify-end">
                 <button onclick="closeDisclaimerModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition">Close</button>
@@ -813,7 +758,6 @@
 
     <!-- Core UI & Modal Controller Initialization -->
     <script>
-        let currentStep = 1;
         let activeModal = null;
         let currentGeneratedCaptcha = "";
         let isSubmitting = false;
@@ -829,6 +773,7 @@
             const noticeText = document.getElementById('modalNoticeText');
             noticeText.innerText = msg;
             noticeBox.classList.remove('hidden');
+            noticeBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
         function hideNotice() {
@@ -837,11 +782,7 @@
 
         window.addEventListener('popstate', function (e) {
             if (activeModal === 'applyModal') {
-                if (currentStep > 1) {
-                    goToStep(currentStep - 1, false);
-                } else {
-                    closeApplyModal(false);
-                }
+                closeApplyModal(false);
             } else if (activeModal) {
                 closeAllModalsDirectly();
             }
@@ -861,7 +802,6 @@
             if(typeof renderDynamicFormByService === 'function') {
                 renderDynamicFormByService(customJobTitle);
             }
-            goToStep(1, false);
             generateCaptcha();
             pushModalState('applyModal');
         }
