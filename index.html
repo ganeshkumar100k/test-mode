@@ -9,25 +9,32 @@
     <!-- FontAwesome Icons CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0d47a1',
-                        secondary: '#1976d2',
+                        primary: '#2563eb',
+                        secondary: '#7c3aed',
                         accent: '#f59e0b',
-                        darkNavy: '#0a2540',
+                        darkNavy: '#0f172a',
                     },
                     fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'Poppins', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
     <style>
+        /* Colorful Glowing Background Gradient */
+        .hero-bg {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #1e40af 70%, #0d9488 100%);
+        }
+        .rainbow-border {
+            background: linear-gradient(90deg, #ec4899, #8b5cf6, #3b82f6, #10b981, #f59e0b);
+        }
         .marquee {
             white-space: nowrap;
             overflow: hidden;
@@ -45,6 +52,10 @@
         .marquee:hover .marquee-content {
             animation-play-state: paused;
         }
+        .card-glow:hover {
+            box-shadow: 0 15px 35px -5px rgba(59, 130, 246, 0.25), 0 10px 10px -5px rgba(59, 130, 246, 0.1);
+            transform: translateY(-4px);
+        }
         @media print {
             body * { visibility: hidden; }
             #printableReceipt, #printableReceipt * { visibility: visible; }
@@ -52,137 +63,180 @@
         }
     </style>
 </head>
-<body class="bg-slate-100 font-sans text-slate-800 min-h-screen flex flex-col relative">
+<body class="bg-gradient-to-br from-slate-50 via-blue-50/40 to-slate-100 font-sans text-slate-800 min-h-screen flex flex-col relative">
 
     <!-- Loading Overlay -->
-    <div id="loadingOverlay" class="fixed inset-0 bg-slate-900/80 backdrop-blur-md z-[100] hidden flex flex-col items-center justify-center text-white p-4">
-        <div class="w-16 h-16 border-4 border-amber-400 border-t-transparent rounded-full animate-spin mb-4"></div>
-        <h3 class="text-lg font-bold">Uploading & Submitting Application...</h3>
+    <div id="loadingOverlay" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-[100] hidden flex flex-col items-center justify-center text-white p-4">
+        <div class="relative">
+            <div class="w-16 h-16 border-4 border-amber-400 border-t-pink-500 rounded-full animate-spin"></div>
+            <div class="absolute inset-0 flex items-center justify-center font-bold text-xs text-amber-300">GDW</div>
+        </div>
+        <h3 class="text-xl font-bold mt-4 text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-pink-400 to-cyan-400">Uploading & Submitting Application...</h3>
         <p class="text-xs text-slate-300 mt-1">Please wait while your details & documents are being processed.</p>
     </div>
 
-    <!-- Top Bar -->
-    <div class="bg-darkNavy text-white text-xs md:text-sm py-2 px-4">
+    <!-- Top Colorful Bar -->
+    <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white text-xs md:text-sm py-2.5 px-4 border-b border-indigo-500/20 shadow-sm">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-            <div class="flex items-center space-x-4">
-                <span><i class="fa-solid fa-user-tie text-amber-400 mr-1"></i> Director: <strong>Mr. Ganesh Kumar Gond</strong></span>
-                <span class="hidden md:inline">|</span>
-                <span class="hidden md:inline"><i class="fa-solid fa-shield-halved text-emerald-400 mr-1"></i> Govt Authorized Digital Seva Portal</span>
+            <div class="flex items-center space-x-3">
+                <span class="bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 font-bold px-2 py-0.5 rounded text-[11px] shadow-sm"><i class="fa-solid fa-crown mr-1"></i> DIRECTOR</span>
+                <span class="font-semibold text-slate-200">Mr. Ganesh Kumar Gond</span>
+                <span class="hidden md:inline text-indigo-400">|</span>
+                <span class="hidden md:inline text-emerald-400 font-medium"><i class="fa-solid fa-circle-check mr-1 animate-pulse"></i> Govt Authorized Digital Seva Portal</span>
             </div>
             <div class="flex items-center space-x-4">
-                <a href="tel:8252880028" class="hover:text-amber-300 transition"><i class="fa-solid fa-phone text-amber-400 mr-1"></i> 8252880028</a>
-                <a href="https://wa.me/918252880028?text=Hello%20Ganesh%20Digital%20World,%20I%20need%20help" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center transition">
-                    <i class="fa-brands fa-whatsapp mr-1 text-sm"></i> WhatsApp Support
+                <a href="tel:8252880028" class="text-amber-400 font-bold hover:text-amber-300 transition flex items-center">
+                    <i class="fa-solid fa-phone-volume mr-1.5 animate-bounce"></i> 8252880028
+                </a>
+                <a href="https://wa.me/918252880028?text=Hello%20Ganesh%20Digital%20World,%20I%20need%20help" target="_blank" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white px-3.5 py-1 rounded-full text-xs font-bold flex items-center shadow-lg shadow-emerald-500/20 transition transform hover:scale-105">
+                    <i class="fa-brands fa-whatsapp mr-1.5 text-sm"></i> WhatsApp Support
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Main Header -->
-    <header class="bg-white shadow-md sticky top-0 z-40">
+    <!-- Main Navigation Header -->
+    <header class="bg-white/95 backdrop-blur-md shadow-lg shadow-blue-900/5 sticky top-0 z-40 border-b border-slate-100">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <div class="flex items-center space-x-3.5 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                 <!-- Vector Emblem Logo -->
-                <div class="w-12 h-12 rounded-full bg-slate-900 border-2 border-amber-400 flex items-center justify-center p-1 shadow-md">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-900 via-blue-900 to-indigo-950 border-2 border-amber-400 flex items-center justify-center p-1 shadow-lg shadow-blue-600/20 transform hover:rotate-3 transition duration-300">
                     <svg viewBox="0 0 200 200" class="w-full h-full">
-                        <circle cx="100" cy="100" r="95" fill="#0a2540" stroke="#f59e0b" stroke-width="6"/>
+                        <circle cx="100" cy="100" r="95" fill="#0f172a" stroke="#f59e0b" stroke-width="6"/>
                         <path d="M100 25 L115 50 L85 50 Z" fill="#f59e0b"/>
                         <path d="M85 52 Q100 42 115 52 L110 65 L90 65 Z" fill="#f59e0b"/>
                         <circle cx="100" cy="75" r="14" fill="#f59e0b"/>
                         <path d="M100 85 Q105 105 120 105" fill="none" stroke="#f59e0b" stroke-width="6" stroke-linecap="round"/>
-                        <rect x="55" y="115" width="90" height="50" rx="4" fill="#0d47a1" stroke="#f59e0b" stroke-width="3"/>
+                        <rect x="55" y="115" width="90" height="50" rx="4" fill="#2563eb" stroke="#f59e0b" stroke-width="3"/>
                         <rect x="45" y="165" width="110" height="8" rx="2" fill="#f59e0b"/>
-                        <text x="100" y="146" font-family="Poppins, sans-serif" font-weight="900" font-size="22" fill="#ffffff" text-anchor="middle">GDW</text>
+                        <text x="100" y="146" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="22" fill="#ffffff" text-anchor="middle">GDW</text>
                     </svg>
                 </div>
                 <div>
-                    <h1 class="text-xl md:text-2xl font-bold text-primary leading-tight tracking-tight">GANESH DIGITAL WORLD</h1>
-                    <p class="text-xs text-slate-500 font-medium">Online Forms, Certificates & Digital ID Services</p>
+                    <h1 class="text-xl md:text-2xl font-black bg-gradient-to-r from-blue-700 via-indigo-600 to-pink-600 bg-clip-text text-transparent leading-tight tracking-tight">
+                        GANESH DIGITAL WORLD
+                    </h1>
+                    <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Fast Cyber Cafe & Online Seva Portal</p>
                 </div>
             </div>
-            <div class="hidden lg:flex items-center space-x-6 font-medium text-sm">
-                <a href="#jobs-section" class="hover:text-primary transition">Latest Jobs</a>
-                <a href="#certificates-section" class="hover:text-primary transition">Certificates</a>
-                <a href="#idcards-section" class="hover:text-primary transition">ID Cards</a>
-                <a href="#scholarship-section" class="hover:text-primary transition">Scholarship</a>
-                <button onclick="openPrivacyModal()" class="hover:text-primary transition text-slate-600">Privacy Policy</button>
-                <button onclick="openTermsModal()" class="hover:text-primary transition text-slate-600">Terms & Conditions</button>
-                <button onclick="openDisclaimerModal()" class="hover:text-primary transition text-slate-600">Disclaimer</button>
-                <button onclick="openTrackModal()" class="bg-slate-100 hover:bg-slate-200 text-primary px-4 py-2 rounded-lg border border-slate-300 font-semibold text-xs flex items-center transition">
-                    <i class="fa-solid fa-magnifying-glass mr-2"></i> Track Application
+            
+            <div class="hidden lg:flex items-center space-x-6 font-semibold text-sm">
+                <a href="#jobs-section" class="text-slate-700 hover:text-blue-600 transition flex items-center gap-1"><i class="fa-solid fa-briefcase text-emerald-500 text-xs"></i> Latest Jobs</a>
+                <a href="#certificates-section" class="text-slate-700 hover:text-blue-600 transition flex items-center gap-1"><i class="fa-solid fa-certificate text-amber-500 text-xs"></i> Certificates</a>
+                <a href="#idcards-section" class="text-slate-700 hover:text-blue-600 transition flex items-center gap-1"><i class="fa-solid fa-id-card text-indigo-500 text-xs"></i> ID Cards</a>
+                <a href="#scholarship-section" class="text-slate-700 hover:text-blue-600 transition flex items-center gap-1"><i class="fa-solid fa-graduation-cap text-purple-500 text-xs"></i> Scholarship</a>
+                <button onclick="openPrivacyModal()" class="text-slate-500 hover:text-blue-600 transition">Privacy</button>
+                <button onclick="openTermsModal()" class="text-slate-500 hover:text-blue-600 transition">Terms</button>
+                <button onclick="openDisclaimerModal()" class="text-slate-500 hover:text-blue-600 transition">Disclaimer</button>
+                <button onclick="openTrackModal()" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-4 py-2 rounded-xl shadow-md shadow-blue-500/20 font-bold text-xs flex items-center transition transform hover:scale-105">
+                    <i class="fa-solid fa-magnifying-glass mr-2 text-amber-300"></i> Track Application
                 </button>
             </div>
             <div class="lg:hidden">
-                <button onclick="openTrackModal()" class="bg-primary text-white text-xs px-3 py-2 rounded-lg font-semibold">
+                <button onclick="openTrackModal()" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs px-3.5 py-2 rounded-lg font-bold shadow-md">
                     <i class="fa-solid fa-magnifying-glass mr-1"></i> Track
                 </button>
             </div>
         </div>
+        <div class="h-1 w-full rainbow-border"></div>
     </header>
 
     <!-- News Marquee Notice -->
-    <div class="bg-amber-500 text-slate-900 font-semibold text-xs md:text-sm py-2 px-2 flex items-center shadow-inner">
-        <span class="bg-red-700 text-white px-3 py-1 rounded font-bold uppercase text-[10px] tracking-wider mr-2 shrink-0">LATEST NOTICE</span>
+    <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 text-slate-950 font-bold text-xs md:text-sm py-2.5 px-3 flex items-center shadow-md">
+        <span class="bg-red-600 text-white px-3 py-1 rounded-md font-black uppercase text-[10px] tracking-wider mr-2 shrink-0 shadow-sm flex items-center">
+            <i class="fa-solid fa-bolt mr-1 animate-pulse"></i> LIVE UPDATES
+        </span>
         <div class="marquee w-full">
-            <div id="marqueeNoticeContainer" class="marquee-content">
+            <div id="marqueeNoticeContainer" class="marquee-content font-bold text-slate-950 tracking-wide">
                 <!-- Dynamically Rendered via posts.js -->
             </div>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-primary to-secondary text-white py-8 px-4">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <!-- Colorful Hero Section -->
+    <section class="hero-bg text-white py-12 px-4 relative overflow-hidden shadow-2xl">
+        <!-- Background Glowing Circles -->
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
             <div class="max-w-2xl text-center md:text-left">
-                <span class="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider inline-block mb-3">100% Secure & Fast Online Portal</span>
-                <h2 class="text-2xl md:text-4xl font-extrabold mb-3 leading-tight">Apply Government Forms & Certificates Online</h2>
-                <p class="text-blue-100 text-sm md:text-base mb-6">Upload required documents, complete payment online and receive your official receipt or completed documents directly on WhatsApp.</p>
-                <div class="flex flex-wrap gap-3 justify-center md:justify-start">
-                    <button onclick="openApplyModal('residence')" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-5 py-2.5 rounded-lg text-sm shadow-md transition flex items-center">
-                        <i class="fa-solid fa-file-signature mr-2"></i> Apply Certificate Now
+                <span class="bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-black px-3.5 py-1.5 rounded-full uppercase tracking-wider inline-flex items-center gap-1.5 mb-4 shadow-lg">
+                    <i class="fa-solid fa-shield-halved text-amber-300"></i> 100% Secure & Fast Online Portal
+                </span>
+                <h2 class="text-3xl md:text-5xl font-black mb-4 leading-tight tracking-tight text-white drop-shadow-md">
+                    Apply Government Forms & Certificates <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-300 to-pink-400">Online In Minutes</span>
+                </h2>
+                <p class="text-blue-100 text-sm md:text-base mb-8 leading-relaxed">
+                    Upload required documents, complete easy UPI payment and receive your official acknowledgment receipt directly on WhatsApp.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                    <button onclick="openApplyModal('residence')" class="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-500 hover:to-orange-500 text-slate-950 font-black px-6 py-3.5 rounded-xl text-sm shadow-xl shadow-amber-500/30 transition transform hover:-translate-y-0.5 flex items-center">
+                        <i class="fa-solid fa-file-signature mr-2 text-base"></i> Apply Certificate Now
                     </button>
-                    <button onclick="openApplyModal('pan')" class="bg-white text-primary hover:bg-blue-50 font-bold px-5 py-2.5 rounded-lg text-sm shadow-md transition flex items-center">
-                        <i class="fa-solid fa-id-card mr-2"></i> Apply PAN Card
+                    <button onclick="openApplyModal('pan')" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md font-bold px-6 py-3.5 rounded-xl text-sm shadow-lg transition transform hover:-translate-y-0.5 flex items-center">
+                        <i class="fa-solid fa-id-card mr-2 text-cyan-300 text-base"></i> Apply PAN Card
                     </button>
                 </div>
             </div>
-            <!-- Quick Badges -->
-            <div class="grid grid-cols-2 gap-3 w-full md:w-auto">
-                <div class="bg-white/10 backdrop-blur-md p-3 rounded-lg border border-white/20 text-center">
-                    <i class="fa-solid fa-bolt text-amber-300 text-2xl mb-1"></i>
-                    <p class="text-xs font-semibold">Fast Processing</p>
+
+            <!-- Colorful Highlight Badges -->
+            <div class="grid grid-cols-2 gap-4 w-full md:w-auto">
+                <div class="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-lg p-4 rounded-2xl border border-white/20 text-center shadow-lg transform hover:scale-105 transition">
+                    <div class="w-12 h-12 mx-auto bg-amber-400/20 rounded-xl flex items-center justify-center text-amber-300 text-2xl mb-2">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h5 class="text-xs font-bold text-white">Fast Processing</h5>
+                    <p class="text-[10px] text-blue-200">Same Day Apply</p>
                 </div>
-                <div class="bg-white/10 backdrop-blur-md p-3 rounded-lg border border-white/20 text-center">
-                    <i class="fa-solid fa-shield-check text-emerald-300 text-2xl mb-1"></i>
-                    <p class="text-xs font-semibold">Safe Data</p>
+                <div class="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-lg p-4 rounded-2xl border border-white/20 text-center shadow-lg transform hover:scale-105 transition">
+                    <div class="w-12 h-12 mx-auto bg-emerald-400/20 rounded-xl flex items-center justify-center text-emerald-300 text-2xl mb-2">
+                        <i class="fa-solid fa-shield-check"></i>
+                    </div>
+                    <h5 class="text-xs font-bold text-white">Safe Data</h5>
+                    <p class="text-[10px] text-blue-200">Encrypted Submissions</p>
                 </div>
-                <div class="bg-white/10 backdrop-blur-md p-3 rounded-lg border border-white/20 text-center">
-                    <i class="fa-solid fa-qrcode text-blue-300 text-2xl mb-1"></i>
-                    <p class="text-xs font-semibold">Easy UPI Pay</p>
+                <div class="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-lg p-4 rounded-2xl border border-white/20 text-center shadow-lg transform hover:scale-105 transition">
+                    <div class="w-12 h-12 mx-auto bg-cyan-400/20 rounded-xl flex items-center justify-center text-cyan-300 text-2xl mb-2">
+                        <i class="fa-solid fa-qrcode"></i>
+                    </div>
+                    <h5 class="text-xs font-bold text-white">Easy UPI Pay</h5>
+                    <p class="text-[10px] text-blue-200">GPay, PhonePe, Paytm</p>
                 </div>
-                <div class="bg-white/10 backdrop-blur-md p-3 rounded-lg border border-white/20 text-center">
-                    <i class="fa-brands fa-whatsapp text-emerald-400 text-2xl mb-1"></i>
-                    <p class="text-xs font-semibold">WhatsApp Receipt</p>
+                <div class="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-lg p-4 rounded-2xl border border-white/20 text-center shadow-lg transform hover:scale-105 transition">
+                    <div class="w-12 h-12 mx-auto bg-green-400/20 rounded-xl flex items-center justify-center text-green-300 text-2xl mb-2">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <h5 class="text-xs font-bold text-white">WhatsApp Updates</h5>
+                    <p class="text-[10px] text-blue-200">Receipt on Phone</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Main Content Area -->
-    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow space-y-10">
+    <main class="max-w-7xl mx-auto px-4 py-10 flex-grow space-y-12">
 
         <!-- 3 Main Action Grid (Result | Admit Card | Latest Jobs) -->
-        <section id="jobs-section" class="scroll-mt-20">
-            <h3 class="text-xl font-bold text-slate-800 mb-4 border-l-4 border-primary pl-3 flex items-center justify-between">
-                <span>Top Online Portals & Updates</span>
-                <span class="text-xs text-slate-500 font-normal">Daily Updated</span>
-            </h3>
+        <section id="jobs-section" class="scroll-mt-24">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h3 class="text-2xl font-black text-slate-800 flex items-center gap-2">
+                        <span class="w-3 h-8 bg-gradient-to-b from-blue-600 to-indigo-600 rounded-full inline-block"></span>
+                        Top Online Portals & Updates
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-0.5 ml-5">Latest Exam Results, Hall Tickets & Govt Job Applications</p>
+                </div>
+                <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full border border-emerald-300 flex items-center gap-1">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> Live Portal
+                </span>
+            </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Result Box -->
-                <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden flex flex-col">
-                    <div class="bg-red-600 text-white p-3 font-bold text-center text-lg flex items-center justify-center">
-                        <i class="fa-solid fa-square-poll-vertical mr-2"></i> RESULT
+                <div class="bg-white rounded-2xl shadow-md border-2 border-red-100 overflow-hidden flex flex-col card-glow transition duration-300">
+                    <div class="bg-gradient-to-r from-red-600 to-rose-600 text-white p-3.5 font-bold text-center text-base flex items-center justify-center shadow-sm">
+                        <i class="fa-solid fa-square-poll-vertical mr-2 text-lg"></i> RESULT
                     </div>
                     <ul id="resultsContainer" class="divide-y divide-slate-100 flex-grow text-sm">
                         <!-- Dynamically Rendered via posts.js -->
@@ -190,9 +244,9 @@
                 </div>
 
                 <!-- Admit Card Box -->
-                <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden flex flex-col">
-                    <div class="bg-blue-600 text-white p-3 font-bold text-center text-lg flex items-center justify-center">
-                        <i class="fa-solid fa-address-card mr-2"></i> ADMIT CARD
+                <div class="bg-white rounded-2xl shadow-md border-2 border-blue-100 overflow-hidden flex flex-col card-glow transition duration-300">
+                    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-3.5 font-bold text-center text-base flex items-center justify-center shadow-sm">
+                        <i class="fa-solid fa-address-card mr-2 text-lg"></i> ADMIT CARD
                     </div>
                     <ul id="admitCardsContainer" class="divide-y divide-slate-100 flex-grow text-sm">
                         <!-- Dynamically Rendered via posts.js -->
@@ -200,9 +254,9 @@
                 </div>
 
                 <!-- Latest Jobs Box -->
-                <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden flex flex-col">
-                    <div class="bg-emerald-600 text-white p-3 font-bold text-center text-lg flex items-center justify-center">
-                        <i class="fa-solid fa-briefcase mr-2"></i> LATEST JOBS
+                <div class="bg-white rounded-2xl shadow-md border-2 border-emerald-100 overflow-hidden flex flex-col card-glow transition duration-300">
+                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white p-3.5 font-bold text-center text-base flex items-center justify-center shadow-sm">
+                        <i class="fa-solid fa-briefcase mr-2 text-lg"></i> LATEST JOBS
                     </div>
                     <ul id="latestJobsContainer" class="divide-y divide-slate-100 flex-grow text-sm">
                         <!-- Dynamically Rendered via posts.js -->
@@ -212,61 +266,70 @@
         </section>
 
         <!-- Certificates Section (RTPS Bihar) -->
-        <section id="certificates-section" class="scroll-mt-20">
-            <h3 class="text-xl font-bold text-slate-800 mb-4 border-l-4 border-amber-500 pl-3">
-                Certificate Services / सरकारी प्रमाण पत्र सेवाएं (RTPS Bihar)
-            </h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <section id="certificates-section" class="scroll-mt-24">
+            <div class="mb-6">
+                <h3 class="text-2xl font-black text-slate-800 flex items-center gap-2">
+                    <span class="w-3 h-8 bg-gradient-to-b from-amber-500 to-orange-500 rounded-full inline-block"></span>
+                    Certificate Services / सरकारी प्रमाण पत्र सेवाएं (RTPS Bihar)
+                </h3>
+                <p class="text-xs text-slate-500 ml-5">Bihar RTPS Service Plus Online Application Portal</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 
-                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <!-- Residence -->
+                <div class="bg-gradient-to-b from-white to-amber-50/40 p-5 rounded-2xl border-2 border-amber-200/80 shadow-md card-glow transition duration-300 flex flex-col justify-between">
                     <div>
-                        <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center mb-3 text-lg font-bold">
+                        <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 text-slate-950 rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-amber-500/20">
                             <i class="fa-solid fa-house-user"></i>
                         </div>
-                        <h4 class="font-bold text-slate-800 mb-1">Residence Certificate</h4>
-                        <p class="text-xs text-slate-500 mb-3">Niwas Praman Patra / निवास प्रमाण पत्र</p>
+                        <h4 class="font-extrabold text-slate-900 text-base mb-1">Residence Certificate</h4>
+                        <p class="text-xs text-slate-600 font-medium mb-4">Niwas Praman Patra / निवास प्रमाण पत्र (RTPS Bihar)</p>
                     </div>
-                    <button onclick="openApplyModal('residence')" class="w-full bg-primary hover:bg-secondary text-white text-xs font-semibold py-2 rounded-lg transition">
-                        Apply Residence
+                    <button onclick="openApplyModal('residence')" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-xs py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02]">
+                        Apply Residence →
                     </button>
                 </div>
 
-                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <!-- Caste -->
+                <div class="bg-gradient-to-b from-white to-blue-50/40 p-5 rounded-2xl border-2 border-blue-200/80 shadow-md card-glow transition duration-300 flex flex-col justify-between">
                     <div>
-                        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-3 text-lg font-bold">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-blue-500/20">
                             <i class="fa-solid fa-users"></i>
                         </div>
-                        <h4 class="font-bold text-slate-800 mb-1">Caste Certificate</h4>
-                        <p class="text-xs text-slate-500 mb-3">Jati Praman Patra / जाति प्रमाण पत्र (BC/OBC/SC/ST)</p>
+                        <h4 class="font-extrabold text-slate-900 text-base mb-1">Caste Certificate</h4>
+                        <p class="text-xs text-slate-600 font-medium mb-4">Jati Praman Patra / जाति प्रमाण पत्र (BC/OBC/SC/ST)</p>
                     </div>
-                    <button onclick="openApplyModal('caste')" class="w-full bg-primary hover:bg-secondary text-white text-xs font-semibold py-2 rounded-lg transition">
-                        Apply Caste
+                    <button onclick="openApplyModal('caste')" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02]">
+                        Apply Caste →
                     </button>
                 </div>
 
-                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <!-- Income -->
+                <div class="bg-gradient-to-b from-white to-emerald-50/40 p-5 rounded-2xl border-2 border-emerald-200/80 shadow-md card-glow transition duration-300 flex flex-col justify-between">
                     <div>
-                        <div class="w-10 h-10 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center mb-3 text-lg font-bold">
+                        <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-emerald-500/20">
                             <i class="fa-solid fa-indian-rupee-sign"></i>
                         </div>
-                        <h4 class="font-bold text-slate-800 mb-1">Income Certificate</h4>
-                        <p class="text-xs text-slate-500 mb-3">Aay Praman Patra / आय प्रमाण पत्र</p>
+                        <h4 class="font-extrabold text-slate-900 text-base mb-1">Income Certificate</h4>
+                        <p class="text-xs text-slate-600 font-medium mb-4">Aay Praman Patra / आय प्रमाण पत्र (RTPS Bihar)</p>
                     </div>
-                    <button onclick="openApplyModal('income')" class="w-full bg-primary hover:bg-secondary text-white text-xs font-semibold py-2 rounded-lg transition">
-                        Apply Income
+                    <button onclick="openApplyModal('income')" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02]">
+                        Apply Income →
                     </button>
                 </div>
 
-                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <!-- Other -->
+                <div class="bg-gradient-to-b from-white to-purple-50/40 p-5 rounded-2xl border-2 border-purple-200/80 shadow-md card-glow transition duration-300 flex flex-col justify-between">
                     <div>
-                        <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mb-3 text-lg font-bold">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-purple-500/20">
                             <i class="fa-solid fa-certificate"></i>
                         </div>
-                        <h4 class="font-bold text-slate-800 mb-1">Other Certificates</h4>
-                        <p class="text-xs text-slate-500 mb-3">Birth, Death & Character Cert. / अन्य प्रमाण पत्र</p>
+                        <h4 class="font-extrabold text-slate-900 text-base mb-1">Other Certificates</h4>
+                        <p class="text-xs text-slate-600 font-medium mb-4">Birth, Death & Character Cert. / अन्य प्रमाण पत्र</p>
                     </div>
-                    <button onclick="openApplyModal('other_cert')" class="w-full bg-primary hover:bg-secondary text-white text-xs font-semibold py-2 rounded-lg transition">
-                        Apply Other
+                    <button onclick="openApplyModal('other_cert')" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02]">
+                        Apply Other →
                     </button>
                 </div>
 
@@ -274,80 +337,94 @@
         </section>
 
         <!-- ID Card Section -->
-        <section id="idcards-section" class="scroll-mt-20">
-            <h3 class="text-xl font-bold text-slate-800 mb-4 border-l-4 border-emerald-500 pl-3">
-                ID Card & Aadhaar Services
-            </h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <section id="idcards-section" class="scroll-mt-24">
+            <div class="mb-6">
+                <h3 class="text-2xl font-black text-slate-800 flex items-center gap-2">
+                    <span class="w-3 h-8 bg-gradient-to-b from-emerald-500 to-teal-500 rounded-full inline-block"></span>
+                    ID Card & Digital Identity Services
+                </h3>
+                <p class="text-xs text-slate-500 ml-5">PAN Card, Voter ID, Aadhaar & Labour Cards</p>
+            </div>
 
-                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+                <!-- PAN -->
+                <div class="bg-gradient-to-b from-white to-indigo-50/40 p-5 rounded-2xl border-2 border-indigo-200/80 shadow-md card-glow transition duration-300 flex flex-col justify-between">
                     <div>
-                        <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mb-3 text-lg font-bold">
+                        <div class="w-12 h-12 bg-gradient-to-br from-indigo-600 to-violet-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-indigo-500/20">
                             <i class="fa-solid fa-id-card"></i>
                         </div>
-                        <h4 class="font-bold text-slate-800 mb-1">PAN Card</h4>
-                        <p class="text-xs text-slate-500 mb-3">New PAN Card & Correction / नया पैन व सुधार</p>
+                        <h4 class="font-extrabold text-slate-900 text-base mb-1">PAN Card</h4>
+                        <p class="text-xs text-slate-600 font-medium mb-4">New PAN Card & Correction / नया पैन व सुधार</p>
                     </div>
-                    <button onclick="openApplyModal('pan')" class="w-full bg-primary hover:bg-secondary text-white text-xs font-semibold py-2 rounded-lg transition">
-                        Apply PAN Card
+                    <button onclick="openApplyModal('pan')" class="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02]">
+                        Apply PAN Card →
                     </button>
                 </div>
 
-                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <!-- Voter -->
+                <div class="bg-gradient-to-b from-white to-cyan-50/40 p-5 rounded-2xl border-2 border-cyan-200/80 shadow-md card-glow transition duration-300 flex flex-col justify-between">
                     <div>
-                        <div class="w-10 h-10 bg-cyan-100 text-cyan-600 rounded-lg flex items-center justify-center mb-3 text-lg font-bold">
+                        <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-cyan-500/20">
                             <i class="fa-solid fa-check-to-slot"></i>
                         </div>
-                        <h4 class="font-bold text-slate-800 mb-1">Voter ID Card</h4>
-                        <p class="text-xs text-slate-500 mb-3">New Voter & Correction (Form 6/8) / नया व सुधार</p>
+                        <h4 class="font-extrabold text-slate-900 text-base mb-1">Voter ID Card</h4>
+                        <p class="text-xs text-slate-600 font-medium mb-4">New Voter & Correction (Form 6/8) / नया व सुधार</p>
                     </div>
-                    <button onclick="openApplyModal('voter')" class="w-full bg-primary hover:bg-secondary text-white text-xs font-semibold py-2 rounded-lg transition">
-                        Apply Voter ID
+                    <button onclick="openApplyModal('voter')" class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02]">
+                        Apply Voter ID →
                     </button>
                 </div>
 
-                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <!-- Aadhaar -->
+                <div class="bg-gradient-to-b from-white to-amber-50/40 p-5 rounded-2xl border-2 border-amber-200/80 shadow-md card-glow transition duration-300 flex flex-col justify-between">
                     <div>
-                        <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center mb-3 text-lg font-bold">
+                        <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-yellow-500 text-slate-950 rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-amber-500/20">
                             <i class="fa-solid fa-fingerprint"></i>
                         </div>
-                        <h4 class="font-bold text-slate-800 mb-1">Aadhaar Services</h4>
-                        <p class="text-xs text-slate-500 mb-3">Address Correction & Print / आधार सुधार</p>
+                        <h4 class="font-extrabold text-slate-900 text-base mb-1">Aadhaar Services</h4>
+                        <p class="text-xs text-slate-600 font-medium mb-4">Address Correction & Print / आधार सुधार</p>
                     </div>
-                    <button onclick="openApplyModal('aadhaar')" class="w-full bg-primary hover:bg-secondary text-white text-xs font-semibold py-2 rounded-lg transition">
-                        Update Aadhaar
+                    <button onclick="openApplyModal('aadhaar')" class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-slate-950 font-bold text-xs py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02]">
+                        Update Aadhaar →
                     </button>
                 </div>
 
-                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <!-- Ayushman -->
+                <div class="bg-gradient-to-b from-white to-rose-50/40 p-5 rounded-2xl border-2 border-rose-200/80 shadow-md card-glow transition duration-300 flex flex-col justify-between">
                     <div>
-                        <div class="w-10 h-10 bg-rose-100 text-rose-600 rounded-lg flex items-center justify-center mb-3 text-lg font-bold">
+                        <div class="w-12 h-12 bg-gradient-to-br from-rose-500 to-pink-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-rose-500/20">
                             <i class="fa-solid fa-heart-pulse"></i>
                         </div>
-                        <h4 class="font-bold text-slate-800 mb-1">Ayushman / E-Shram</h4>
-                        <p class="text-xs text-slate-500 mb-3">Ayushman & Labour Card / आयुष्मान कार्ड</p>
+                        <h4 class="font-extrabold text-slate-900 text-base mb-1">Ayushman / E-Shram</h4>
+                        <p class="text-xs text-slate-600 font-medium mb-4">Ayushman & Labour Card / आयुष्मान कार्ड</p>
                     </div>
-                    <button onclick="openApplyModal('ayushman')" class="w-full bg-primary hover:bg-secondary text-white text-xs font-semibold py-2 rounded-lg transition">
-                        Apply Ayushman
+                    <button onclick="openApplyModal('ayushman')" class="w-full bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02]">
+                        Apply Ayushman →
                     </button>
                 </div>
 
             </div>
         </section>
 
-        <!-- Scholarship Section -->
-        <section id="scholarship-section" class="scroll-mt-20">
-            <div class="bg-gradient-to-r from-slate-900 to-primary text-white rounded-2xl p-6 md:p-8 shadow-xl">
-                <div class="flex flex-col lg:flex-row justify-between items-center gap-6">
+        <!-- Colorful Scholarship Banner -->
+        <section id="scholarship-section" class="scroll-mt-24">
+            <div class="bg-gradient-to-r from-indigo-950 via-purple-900 to-pink-900 text-white rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden border border-purple-500/30">
+                <div class="absolute -right-10 -bottom-10 w-72 h-72 bg-pink-500/20 rounded-full blur-2xl"></div>
+                <div class="flex flex-col lg:flex-row justify-between items-center gap-8 relative z-10">
                     <div>
-                        <span class="bg-amber-400 text-slate-900 text-xs font-bold px-3 py-1 rounded-full uppercase">Special Student Portal</span>
-                        <h3 class="text-2xl md:text-3xl font-extrabold mt-2 mb-2">Scholarship Application Forms</h3>
-                        <p class="text-slate-300 text-sm max-w-xl">
-                            Pre-Matric, Post-Matric, NSP & State Scholarships Online Apply (छात्रवृत्ति ऑनलाइन फॉर्म).
+                        <span class="bg-gradient-to-r from-amber-400 to-orange-400 text-slate-950 text-xs font-black px-3.5 py-1.5 rounded-full uppercase shadow-md inline-block">
+                            <i class="fa-solid fa-award mr-1"></i> Special Student Portal
+                        </span>
+                        <h3 class="text-3xl md:text-4xl font-black mt-3 mb-2 tracking-tight">
+                            Scholarship Application Forms
+                        </h3>
+                        <p class="text-purple-200 text-sm max-w-xl leading-relaxed">
+                            Pre-Matric, Post-Matric, NSP & Bihar State Scholarships Online Apply (छात्रवृत्ति ऑनलाइन फॉर्म).
                         </p>
                     </div>
-                    <button onclick="openApplyModal('scholarship')" class="bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold px-6 py-3 rounded-xl text-sm shadow-lg transition whitespace-nowrap">
-                        <i class="fa-solid fa-graduation-cap mr-2"></i> Apply Scholarship Now
+                    <button onclick="openApplyModal('scholarship')" class="bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 hover:from-amber-500 hover:to-orange-500 text-slate-950 font-black px-8 py-4 rounded-2xl text-sm shadow-xl shadow-amber-500/30 transition transform hover:scale-105 whitespace-nowrap">
+                        <i class="fa-solid fa-graduation-cap mr-2 text-base"></i> Apply Scholarship Now
                     </button>
                 </div>
             </div>
@@ -355,71 +432,77 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-darkNavy text-slate-300 text-xs py-8 px-4 mt-auto">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 pb-6 border-b border-slate-800">
+    <!-- Colorful Footer -->
+    <footer class="bg-slate-950 text-slate-300 text-xs py-10 px-4 mt-auto border-t border-slate-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-800/80">
             <div>
-                <h4 class="text-white font-bold text-base mb-3">GANESH DIGITAL WORLD</h4>
-                <p class="text-slate-400 mb-3 leading-relaxed">Online Governance, State Certificates, Identification Services & Cyber Cafe Portal.</p>
-                <p class="text-amber-400 font-semibold"><i class="fa-solid fa-user-tie mr-1"></i> Director: Mr. Ganesh Kumar Gond</p>
+                <h4 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-black text-lg mb-3">GANESH DIGITAL WORLD</h4>
+                <p class="text-slate-400 mb-4 leading-relaxed">Government Authorized Online Seva, RTPS Bihar Certificates, ID Cards & Cyber Cafe Solutions.</p>
+                <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 inline-block">
+                    <p class="text-amber-400 font-bold"><i class="fa-solid fa-crown mr-1.5"></i> Director: Mr. Ganesh Kumar Gond</p>
+                </div>
             </div>
             <div>
                 <h4 class="text-white font-bold text-sm mb-3">LEGAL & POLICIES</h4>
-                <ul class="space-y-2">
-                    <li><button onclick="openPrivacyModal()" class="hover:text-amber-400 transition text-left">Privacy Policy</button></li>
-                    <li><button onclick="openTermsModal()" class="hover:text-amber-400 transition text-left">Terms & Conditions</button></li>
-                    <li><button onclick="openDisclaimerModal()" class="hover:text-amber-400 transition text-left">Disclaimer</button></li>
+                <ul class="space-y-2.5">
+                    <li><button onclick="openPrivacyModal()" class="hover:text-amber-400 transition text-left flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-indigo-500"></i> Privacy Policy</button></li>
+                    <li><button onclick="openTermsModal()" class="hover:text-amber-400 transition text-left flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-indigo-500"></i> Terms & Conditions</button></li>
+                    <li><button onclick="openDisclaimerModal()" class="hover:text-amber-400 transition text-left flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-indigo-500"></i> Disclaimer</button></li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-white font-bold text-sm mb-3">QUICK LINKS</h4>
-                <ul class="space-y-2 text-slate-400">
-                    <li><a href="#jobs-section" class="hover:text-amber-400 transition">Latest Job Recruitment</a></li>
-                    <li><a href="#certificates-section" class="hover:text-amber-400 transition">RTPS Bihar Certificates</a></li>
-                    <li><a href="#idcards-section" class="hover:text-amber-400 transition">PAN & Voter Services</a></li>
-                    <li><a href="#scholarship-section" class="hover:text-amber-400 transition">National & State Scholarship</a></li>
+                <h4 class="text-white font-bold text-sm mb-3">SERVICES</h4>
+                <ul class="space-y-2.5 text-slate-400">
+                    <li><a href="#certificates-section" class="hover:text-amber-400 transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-amber-500"></i> RTPS Bihar (Jati, Niwas, Aay)</a></li>
+                    <li><a href="#idcards-section" class="hover:text-amber-400 transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-cyan-500"></i> PAN Card & Correction</a></li>
+                    <li><a href="#idcards-section" class="hover:text-amber-400 transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-emerald-500"></i> Voter Card (Form 6/8)</a></li>
+                    <li><a href="#scholarship-section" class="hover:text-amber-400 transition flex items-center gap-1.5"><i class="fa-solid fa-angle-right text-pink-500"></i> Scholarship Apply</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-white font-bold text-sm mb-3">CONTACT & SUPPORT</h4>
-                <div class="space-y-2 text-slate-400">
-                    <p><i class="fa-solid fa-phone text-amber-400 mr-2"></i> Phone: 8252880028</p>
-                    <p><i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i> WhatsApp: 8252880028 (Active Support)</p>
-                    <p><i class="fa-solid fa-location-dot text-amber-400 mr-2"></i> Bihar, India</p>
+                <div class="space-y-2.5 text-slate-400">
+                    <p class="flex items-center"><i class="fa-solid fa-phone text-amber-400 mr-2.5"></i> 8252880028</p>
+                    <p class="flex items-center"><i class="fa-brands fa-whatsapp text-emerald-400 mr-2.5 text-base"></i> 8252880028 (WhatsApp Active)</p>
+                    <p class="flex items-center"><i class="fa-solid fa-location-dot text-rose-400 mr-2.5"></i> Aurangabad, Bihar, India</p>
                 </div>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto pt-4 text-center text-slate-500">
+        <div class="max-w-7xl mx-auto pt-6 text-center text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-2">
             <p>© 2026 Ganesh Digital World. All Rights Reserved.</p>
+            <p class="text-[11px] text-slate-600">Designed with ❤️ for Digital Bihar</p>
         </div>
     </footer>
 
     <!-- Universal Dynamic Apply Modal Shell -->
-    <div id="applyModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl my-8 overflow-hidden flex flex-col max-h-[90vh]">
+    <div id="applyModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-2xl my-8 overflow-hidden flex flex-col max-h-[92vh] border border-slate-200">
             
-            <!-- Modal Header -->
-            <div class="bg-primary text-white p-4 flex justify-between items-center shrink-0">
+            <!-- Modal Colorful Header -->
+            <div class="bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-800 text-white p-5 flex justify-between items-center shrink-0 shadow-md">
                 <div>
-                    <h3 id="modalTitle" class="font-bold text-lg">Online Service Application</h3>
-                    <p id="modalSubTitle" class="text-xs text-blue-200">Ganesh Digital World Portal</p>
+                    <h3 id="modalTitle" class="font-extrabold text-lg text-white">Online Service Application</h3>
+                    <p id="modalSubTitle" class="text-xs text-blue-200">Ganesh Digital World Official Portal</p>
                 </div>
-                <button onclick="closeApplyModal()" class="text-white/80 hover:text-white text-xl font-bold p-1">
-                    <i class="fa-solid fa-xmark"></i>
+                <button onclick="closeApplyModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
 
-            <div class="p-5 overflow-y-auto flex-grow space-y-6">
+            <div class="p-6 overflow-y-auto flex-grow space-y-6">
 
                 <!-- Dynamic Inline Validation Notice Banner -->
-                <div id="modalNotice" class="hidden bg-red-50 border border-red-300 text-red-700 text-xs p-3 rounded-lg flex items-center justify-between">
-                    <span id="modalNoticeText">Please fill in all required fields.</span>
-                    <button type="button" onclick="hideNotice()" class="text-red-500 font-bold ml-2">✕</button>
+                <div id="modalNotice" class="hidden bg-rose-50 border-2 border-rose-300 text-rose-800 text-xs p-3.5 rounded-xl flex items-center justify-between shadow-sm">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-circle-exclamation text-rose-500 text-base"></i>
+                        <span id="modalNoticeText" class="font-bold">Please fill in all required fields.</span>
+                    </div>
+                    <button type="button" onclick="hideNotice()" class="text-rose-500 font-bold ml-2">✕</button>
                 </div>
                 
                 <!-- Sequential Step Indicator -->
-                <div class="flex items-center justify-between text-xs font-semibold text-slate-500 border-b border-slate-200 pb-3">
-                    <span id="stepBadge1" class="text-primary font-bold border-b-2 border-primary pb-1">1. Fill Details</span>
+                <div class="flex items-center justify-between text-xs font-bold text-slate-400 border-b border-slate-100 pb-3">
+                    <span id="stepBadge1" class="text-blue-600 border-b-2 border-blue-600 pb-1">1. Fill Details</span>
                     <span id="stepBadge2">2. Upload Documents</span>
                     <span id="stepBadge3">3. Review Bill & Pay</span>
                 </div>
@@ -429,8 +512,8 @@
                     <!-- STEP 1: Dynamically Injected from posts.js -->
                     <div id="step1" class="space-y-4">
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 mb-1">Select Service / सेवा चुनें *</label>
-                            <select id="serviceSelect" onchange="renderDynamicFormByService()" class="w-full text-xs p-2.5 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:outline-none" required>
+                            <label class="block text-xs font-extrabold text-slate-700 mb-1">Select Service / सेवा चुनें *</label>
+                            <select id="serviceSelect" onchange="renderDynamicFormByService()" class="w-full text-xs p-3 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:ring-0 focus:outline-none font-semibold bg-slate-50" required>
                                 <option value="pan">New PAN Card or Correction / नया पैन कार्ड या सुधार</option>
                                 <option value="residence">Residence Certificate / निवास प्रमाण पत्र (RTPS)</option>
                                 <option value="caste">Caste Certificate / जाति प्रमाण पत्र (RTPS)</option>
@@ -449,119 +532,120 @@
                             <!-- Injected by posts.js -->
                         </div>
 
-                        <button type="button" onclick="validateStep1AndNext()" class="w-full bg-primary hover:bg-secondary text-white font-bold py-2.5 rounded-lg text-xs mt-4 transition">
+                        <button type="button" onclick="validateStep1AndNext()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 rounded-xl text-xs mt-4 shadow-lg shadow-blue-500/25 transition transform hover:scale-[1.01]">
                             Next: Upload Documents →
                         </button>
                     </div>
 
                     <!-- STEP 2: Document Upload -->
                     <div id="step2" class="space-y-4 hidden">
-                        <div class="bg-amber-50 border border-amber-200 text-amber-800 text-xs p-3 rounded-lg">
-                            <i class="fa-solid fa-cloud-arrow-up mr-1"></i> Upload Passport Photo, Signature, Identification Card and Supporting Documents.
+                        <div class="bg-amber-50 border border-amber-200 text-amber-900 text-xs p-3.5 rounded-xl font-medium flex items-center gap-2">
+                            <i class="fa-solid fa-cloud-arrow-up text-amber-600 text-lg"></i>
+                            <span>Upload Passport Photo, Signature, Identification Card and Supporting Documents.</span>
                         </div>
 
                         <div id="dynamicDocumentUploadContainer" class="space-y-3">
                             <!-- Injected by posts.js -->
                         </div>
 
-                        <div class="flex gap-2 pt-4">
-                            <button type="button" onclick="goToStep(1)" class="w-1/3 bg-slate-200 text-slate-700 font-bold py-2.5 rounded-lg text-xs transition">
+                        <div class="flex gap-3 pt-4">
+                            <button type="button" onclick="goToStep(1)" class="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-xl text-xs transition">
                                 ← Back
                             </button>
-                            <button type="button" onclick="validateStep2AndNext()" class="w-2/3 bg-primary hover:bg-secondary text-white font-bold py-2.5 rounded-lg text-xs transition">
+                            <button type="button" onclick="validateStep2AndNext()" class="w-2/3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 rounded-xl text-xs shadow-lg shadow-blue-500/25 transition">
                                 Next: Review Bill & Pay →
                             </button>
                         </div>
                     </div>
 
-                    <!-- STEP 3: Auto Calculation & Dynamic Payment Redirect -->
+                    <!-- STEP 3: Billing & Payment -->
                     <div id="step3" class="space-y-4 hidden">
                         
-                        <!-- Auto Dynamic Billing Box -->
-                        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl space-y-2 text-xs">
-                            <h4 class="font-bold text-slate-800 text-sm border-b border-slate-200 pb-2">Automatic Bill Breakdown</h4>
+                        <!-- Dynamic Billing Card -->
+                        <div class="bg-gradient-to-br from-slate-50 to-blue-50/50 border border-blue-100 p-4 rounded-2xl space-y-2.5 text-xs shadow-inner">
+                            <h4 class="font-extrabold text-slate-800 text-sm border-b border-slate-200 pb-2">Automatic Bill Breakdown</h4>
                             <div class="flex justify-between text-slate-600">
                                 <span>Government / Portal Charge:</span>
-                                <span id="billGovtFee">₹0</span>
+                                <span id="billGovtFee" class="font-bold text-slate-800">₹0</span>
                             </div>
                             <div class="flex justify-between text-slate-600">
                                 <span>Cyber Cafe / Processing Fee:</span>
-                                <span id="billServiceCharge">₹30</span>
+                                <span id="billServiceCharge" class="font-bold text-slate-800">₹30</span>
                             </div>
-                            <div class="flex justify-between text-slate-900 font-bold text-sm border-t border-slate-200 pt-2 text-primary">
+                            <div class="flex justify-between text-slate-900 font-black text-base border-t border-slate-200 pt-2 text-blue-700">
                                 <span>TOTAL AMOUNT:</span>
-                                <span id="billTotalAmount">₹30</span>
+                                <span id="billTotalAmount" class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded-lg">₹30</span>
                             </div>
                         </div>
 
                         <!-- Captcha Verification -->
-                        <div class="bg-amber-50/50 p-3 rounded-lg border border-amber-200">
-                            <label class="block text-xs font-bold text-slate-700 mb-1">Security Captcha Code *</label>
+                        <div class="bg-amber-50/60 p-3.5 rounded-2xl border border-amber-200">
+                            <label class="block text-xs font-extrabold text-slate-700 mb-1">Security Captcha Code *</label>
                             <div class="flex items-center space-x-3 mb-2">
-                                <div id="captchaBox" class="bg-slate-800 text-amber-400 font-mono font-bold text-lg px-4 py-1.5 rounded tracking-widest select-none">
+                                <div id="captchaBox" class="bg-slate-900 text-amber-400 font-mono font-black text-xl px-5 py-2 rounded-xl tracking-widest select-none shadow-sm">
                                     8A3B9
                                 </div>
-                                <button type="button" onclick="generateCaptcha()" class="text-xs text-primary font-bold hover:underline">
+                                <button type="button" onclick="generateCaptcha()" class="text-xs text-blue-600 font-bold hover:underline">
                                     <i class="fa-solid fa-arrows-rotate"></i> Refresh
                                 </button>
                             </div>
-                            <input type="text" id="captchaInput" placeholder="Enter Captcha Code Here" class="w-full text-xs p-2 border border-slate-300 rounded-lg uppercase" required>
+                            <input type="text" id="captchaInput" placeholder="Enter Captcha Code Here" class="w-full text-xs p-2.5 border-2 border-slate-200 rounded-xl uppercase font-bold tracking-widest" required>
                         </div>
 
-                        <!-- Payment Option & Dynamic Gateway Redirection -->
+                        <!-- Payment & UTR Verification -->
                         <div class="border-t border-slate-200 pt-3 space-y-3">
-                            <h4 class="text-xs font-bold text-slate-800">Payment Gateway Redirection & Verification</h4>
+                            <h4 class="text-xs font-extrabold text-slate-800">Payment Gateway Redirection & Verification</h4>
                             
-                            <div class="p-3 border border-emerald-300 rounded-xl bg-emerald-50/50 text-center space-y-2">
-                                <p class="text-[11px] font-semibold text-emerald-800">Scan QR or Click App to Pay directly via UPI</p>
+                            <div class="p-4 border-2 border-emerald-300 rounded-2xl bg-gradient-to-b from-emerald-50/70 to-teal-50/50 text-center space-y-3">
+                                <p class="text-xs font-bold text-emerald-900">Scan QR Code or Click App to Pay directly via UPI</p>
                                 
-                                <div class="bg-white p-2 rounded-lg inline-block border border-slate-200 shadow-sm">
-                                    <img id="paymentQrImage" src="https://quickchart.io/qr?text=upi%3A%2F%2Fpay%3Fpa%3D8252880028%2540jio%26pn%3DGanesh%2520Digital%2520world%26am%3D200%26cu%3DINR&size=200&format=png" alt="Payment QR" class="w-32 h-32 mx-auto rounded object-contain border border-slate-100" />
-                                    <p class="text-[10px] font-bold text-slate-700 mt-1">UPI ID: 8252880028@jio</p>
+                                <div class="bg-white p-2.5 rounded-2xl inline-block border-2 border-emerald-200 shadow-md">
+                                    <img id="paymentQrImage" src="https://quickchart.io/qr?text=upi%3A%2F%2Fpay%3Fpa%3D8252880028%2540jio%26pn%3DGanesh%2520Digital%2520world%26am%3D200%26cu%3DINR&size=200&format=png" alt="Payment QR" class="w-36 h-36 mx-auto rounded-xl object-contain border border-slate-100" />
+                                    <p class="text-[11px] font-black text-slate-800 mt-1.5">UPI ID: 8252880028@jio</p>
                                 </div>
 
-                                <div class="flex justify-center gap-2 pt-1">
-                                    <a id="gpayBtn" href="#" class="bg-slate-900 text-white text-[11px] px-3 py-1.5 rounded-lg font-bold flex items-center">
-                                        <i class="fa-brands fa-google-pay text-base mr-1"></i> Google Pay
+                                <div class="flex justify-center gap-3 pt-1">
+                                    <a id="gpayBtn" href="#" class="bg-slate-950 hover:bg-slate-800 text-white text-xs px-4 py-2 rounded-xl font-bold flex items-center shadow-md transition">
+                                        <i class="fa-brands fa-google-pay text-lg mr-1.5 text-blue-400"></i> Google Pay
                                     </a>
-                                    <a id="phonepeBtn" href="#" class="bg-purple-700 text-white text-[11px] px-3 py-1.5 rounded-lg font-bold flex items-center">
-                                        <i class="fa-solid fa-mobile-screen mr-1"></i> PhonePe
+                                    <a id="phonepeBtn" href="#" class="bg-purple-700 hover:bg-purple-800 text-white text-xs px-4 py-2 rounded-xl font-bold flex items-center shadow-md transition">
+                                        <i class="fa-solid fa-mobile-screen mr-1.5"></i> PhonePe
                                     </a>
                                 </div>
                             </div>
 
-                            <!-- Payment Verification (UTR / Transaction Ref ID) -->
-                            <div class="bg-emerald-100/60 p-3 rounded-lg border border-emerald-300 space-y-2">
-                                <label class="block text-xs font-bold text-slate-800">
+                            <!-- Payment UTR Number -->
+                            <div class="bg-emerald-100/70 p-4 rounded-2xl border border-emerald-300 space-y-2.5">
+                                <label class="block text-xs font-black text-slate-800">
                                     <i class="fa-solid fa-receipt text-emerald-600 mr-1"></i> UPI Transaction ID / UTR Number (12 Digits) *
                                 </label>
-                                <p class="text-[10px] text-slate-600">Pay karne ke baad Google Pay / PhonePe se 12-Digit UTR / Ref No. yahan enter karein.</p>
-                                <input type="text" id="paymentUTR" maxlength="20" placeholder="e.g. 423819284712" class="w-full text-xs p-2.5 border border-slate-300 rounded-lg bg-white font-mono uppercase" required>
+                                <p class="text-[10px] text-slate-600 font-medium">Pay karne ke baad Google Pay / PhonePe se 12-Digit UTR / Ref No. yahan enter karein.</p>
+                                <input type="text" id="paymentUTR" maxlength="20" placeholder="e.g. 423819284712" class="w-full text-xs p-3 border-2 border-emerald-300 rounded-xl bg-white font-mono font-bold uppercase" required>
                                 
                                 <label class="flex items-center space-x-2 pt-1 cursor-pointer">
-                                    <input type="checkbox" id="paymentConfirmCheck" class="rounded text-primary focus:ring-primary h-4 w-4" required>
-                                    <span class="text-[11px] font-semibold text-slate-700">I confirm that I have completed the UPI payment for this form. *</span>
+                                    <input type="checkbox" id="paymentConfirmCheck" class="rounded text-blue-600 focus:ring-blue-500 h-4 w-4" required>
+                                    <span class="text-[11px] font-bold text-slate-800">I confirm that I have completed the UPI payment for this form. *</span>
                                 </label>
 
-                                <label class="flex items-start space-x-2 pt-1 cursor-pointer border-t border-emerald-200/60 pt-2">
-                                    <input type="checkbox" id="termsCheck" class="rounded text-primary focus:ring-primary h-4 w-4 mt-0.5" required>
-                                    <span class="text-[11px] text-slate-700">
+                                <label class="flex items-start space-x-2 pt-2 cursor-pointer border-t border-emerald-300/60">
+                                    <input type="checkbox" id="termsCheck" class="rounded text-blue-600 focus:ring-blue-500 h-4 w-4 mt-0.5" required>
+                                    <span class="text-[11px] text-slate-700 font-medium">
                                         I accept the 
-                                        <button type="button" onclick="openPrivacyModal()" class="text-primary font-bold underline hover:text-secondary">Privacy Policy</button>, 
-                                        <button type="button" onclick="openTermsModal()" class="text-primary font-bold underline hover:text-secondary">Terms & Conditions</button> 
+                                        <button type="button" onclick="openPrivacyModal()" class="text-blue-700 font-bold underline">Privacy Policy</button>, 
+                                        <button type="button" onclick="openTermsModal()" class="text-blue-700 font-bold underline">Terms & Conditions</button> 
                                         and 
-                                        <button type="button" onclick="openDisclaimerModal()" class="text-primary font-bold underline hover:text-secondary">Disclaimer</button>. *
+                                        <button type="button" onclick="openDisclaimerModal()" class="text-blue-700 font-bold underline">Disclaimer</button>. *
                                     </span>
                                 </label>
                             </div>
                         </div>
 
-                        <div class="flex gap-2 pt-2">
-                            <button type="button" onclick="goToStep(2)" class="w-1/3 bg-slate-200 text-slate-700 font-bold py-2.5 rounded-lg text-xs transition">
+                        <div class="flex gap-3 pt-2">
+                            <button type="button" onclick="goToStep(2)" class="w-1/3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 rounded-xl text-xs transition">
                                 ← Back
                             </button>
-                            <button type="submit" id="submitBtn" class="w-2/3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg text-xs transition flex items-center justify-center">
-                                <i class="fa-solid fa-check-circle mr-1"></i> Submit & Print Receipt
+                            <button type="submit" id="submitBtn" class="w-2/3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-black py-3 rounded-xl text-xs shadow-lg shadow-emerald-500/25 transition flex items-center justify-center">
+                                <i class="fa-solid fa-check-circle mr-1.5 text-base"></i> Submit & Print Receipt
                             </button>
                         </div>
                     </div>
@@ -572,57 +656,59 @@
     </div>
 
     <!-- Receipt Modal -->
-    <div id="receiptModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 my-8 space-y-4">
+    <div id="receiptModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md p-6 my-8 space-y-5 border border-slate-100">
             
-            <div id="printableReceipt" class="space-y-4 border border-slate-200 p-4 rounded-xl bg-slate-50">
+            <div id="printableReceipt" class="space-y-4 border-2 border-slate-200 p-5 rounded-2xl bg-gradient-to-b from-white to-slate-50">
                 <div class="text-center border-b border-slate-200 pb-3">
-                    <h3 class="font-extrabold text-primary text-lg">GANESH DIGITAL WORLD</h3>
-                    <p class="text-[10px] text-slate-500">Director: Mr. Ganesh Kumar Gond | Mob: 8252880028</p>
-                    <span class="bg-emerald-100 text-emerald-700 font-bold text-[10px] px-2 py-0.5 rounded-full inline-block mt-1">APPLICATION SUBMITTED</span>
+                    <h3 class="font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-700 text-xl">GANESH DIGITAL WORLD</h3>
+                    <p class="text-[10px] text-slate-500 font-medium">Director: Mr. Ganesh Kumar Gond | Mob: 8252880028</p>
+                    <span class="bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold text-[10px] px-3 py-1 rounded-full inline-block mt-2 shadow-sm">
+                        <i class="fa-solid fa-check-double mr-1"></i> APPLICATION SUBMITTED
+                    </span>
                 </div>
 
-                <div class="space-y-1.5 text-xs">
+                <div class="space-y-2 text-xs">
                     <div class="flex justify-between text-slate-500">
                         <span>Token ID:</span>
-                        <strong id="recToken" class="text-slate-800 font-mono">GDW-2026-0000</strong>
+                        <strong id="recToken" class="text-blue-700 font-mono font-black text-sm">GDW-2026-0000</strong>
                     </div>
                     <div class="flex justify-between text-slate-500">
                         <span>Date & Time:</span>
-                        <span id="recDate" class="text-slate-800">18/08/2026</span>
+                        <span id="recDate" class="text-slate-800 font-semibold">18/08/2026</span>
                     </div>
                     <div class="flex justify-between text-slate-500">
                         <span>Service:</span>
-                        <strong id="recService" class="text-slate-800">PAN Card Application</strong>
+                        <strong id="recService" class="text-slate-900 font-bold">PAN Card Application</strong>
                     </div>
                     <div class="flex justify-between text-slate-500">
                         <span>Applicant:</span>
-                        <span id="recName" class="text-slate-800">Customer Name</span>
+                        <span id="recName" class="text-slate-800 font-semibold">Customer Name</span>
                     </div>
                     <div class="flex justify-between text-slate-500">
                         <span>Mobile:</span>
-                        <span id="recMobile" class="text-slate-800">8252880028</span>
+                        <span id="recMobile" class="text-slate-800 font-semibold">8252880028</span>
                     </div>
-                    <div class="flex justify-between text-slate-500 border-t border-slate-200 pt-2 font-bold text-slate-800">
+                    <div class="flex justify-between text-slate-500 border-t border-slate-200 pt-2 font-black text-slate-900">
                         <span>Total Paid Fee:</span>
-                        <span id="recPaid" class="text-primary text-sm">₹200</span>
+                        <span id="recPaid" class="text-emerald-700 font-black text-base">₹200</span>
                     </div>
                     <div class="flex justify-between text-slate-500">
                         <span>Payment UTR:</span>
-                        <strong id="recUTR" class="text-emerald-700 font-mono">423819284712</strong>
+                        <strong id="recUTR" class="text-emerald-700 font-mono font-bold">423819284712</strong>
                     </div>
                 </div>
             </div>
 
-            <div class="space-y-2">
-                <a id="whatsappSendBtn" href="#" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg text-xs flex items-center justify-center transition">
+            <div class="space-y-2.5">
+                <a id="whatsappSendBtn" href="#" target="_blank" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-black py-3 rounded-xl text-xs flex items-center justify-center shadow-lg shadow-emerald-500/20 transition transform hover:scale-[1.01]">
                     <i class="fa-brands fa-whatsapp text-lg mr-2"></i> Send Details on WhatsApp
                 </a>
                 <div class="flex gap-2">
-                    <button onclick="window.print()" class="w-1/2 bg-slate-800 hover:bg-slate-900 text-white font-bold py-2 rounded-lg text-xs">
-                        Print Receipt
+                    <button onclick="window.print()" class="w-1/2 bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl text-xs shadow-md">
+                        <i class="fa-solid fa-print mr-1"></i> Print Receipt
                     </button>
-                    <button onclick="closeReceiptModal()" class="w-1/2 bg-slate-200 text-slate-700 font-bold py-2 rounded-lg text-xs">
+                    <button onclick="closeReceiptModal()" class="w-1/2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2.5 rounded-xl text-xs">
                         Close
                     </button>
                 </div>
@@ -632,10 +718,10 @@
     </div>
 
     <!-- Track Application Modal -->
-    <div id="trackModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl shadow-xl w-full max-w-sm p-5 space-y-4">
-            <div class="flex justify-between items-center border-b border-slate-200 pb-2">
-                <h3 class="font-bold text-slate-800 text-sm">Track Application Status</h3>
+    <div id="trackModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-sm p-6 space-y-4 border border-slate-200">
+            <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+                <h3 class="font-extrabold text-slate-800 text-base">Track Application Status</h3>
                 <button onclick="closeTrackModal()" class="text-slate-400 hover:text-slate-700 text-lg">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
@@ -644,80 +730,80 @@
             <div class="space-y-3">
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Token ID or Mobile No</label>
-                    <input type="text" id="trackInput" placeholder="e.g. GDW-2026-8942 or 8252880028" class="w-full text-xs p-2.5 border border-slate-300 rounded-lg">
+                    <input type="text" id="trackInput" placeholder="e.g. GDW-2026-8942 or 8252880028" class="w-full text-xs p-3 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:outline-none">
                 </div>
-                <button onclick="searchStatus()" class="w-full bg-primary text-white font-bold py-2 rounded-lg text-xs">
+                <button onclick="searchStatus()" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-black py-2.5 rounded-xl text-xs shadow-md transition">
                     Search Status
                 </button>
-                <div id="trackResult" class="hidden text-xs p-3 rounded-lg border"></div>
+                <div id="trackResult" class="hidden text-xs p-3.5 rounded-xl border"></div>
             </div>
         </div>
     </div>
 
     <!-- Privacy Policy Modal -->
-    <div id="privacyModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl p-6 max-w-xl w-full space-y-4 text-xs text-slate-600 max-h-[85vh] overflow-y-auto shadow-2xl">
-            <div class="flex justify-between items-center border-b pb-2">
-                <h3 class="font-bold text-slate-800 text-sm">Privacy Policy / गोपनीयता नीति</h3>
+    <div id="privacyModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 max-w-xl w-full space-y-4 text-xs text-slate-600 max-h-[85vh] overflow-y-auto shadow-2xl border border-slate-200">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-extrabold text-slate-800 text-base">Privacy Policy / गोपनीयता नीति</h3>
                 <button onclick="closePrivacyModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="space-y-3 leading-relaxed text-slate-700">
                 <p><strong>Ganesh Digital World</strong> is committed to protecting your personal data and privacy. This policy outlines how we handle data when you use our Online Digital Seva & Cyber Cafe Portal.</p>
-                <h4 class="font-bold text-slate-900 border-l-2 border-primary pl-2">1. Data Collection & Document Safety</h4>
+                <h4 class="font-bold text-slate-900 border-l-4 border-blue-600 pl-2">1. Data Collection & Document Safety</h4>
                 <p>We collect essential information such as Full Name, Father's Name, Contact Number, Address Details, Photograph, Signature, and Supporting Documents strictly required for processing official Government forms (RTPS Bihar, PAN, Voter ID, Scholarship, etc.).</p>
-                <h4 class="font-bold text-slate-900 border-l-2 border-primary pl-2">2. Strict No Third-Party Sharing</h4>
+                <h4 class="font-bold text-slate-900 border-l-4 border-blue-600 pl-2">2. Strict No Third-Party Sharing</h4>
                 <p>Your uploaded documents and personal details are strictly confidential. We NEVER sell, share, or transfer your personal data to any unauthorized third party or marketing entity.</p>
-                <h4 class="font-bold text-slate-900 border-l-2 border-primary pl-2">3. Data Usage Purpose</h4>
+                <h4 class="font-bold text-slate-900 border-l-4 border-blue-600 pl-2">3. Data Usage Purpose</h4>
                 <p>Data is exclusively used for filling official government portal applications, sending receipts and updates via WhatsApp/Call, and verifying payment transactions.</p>
-                <h4 class="font-bold text-slate-900 border-l-2 border-primary pl-2">4. Support & Grievances</h4>
+                <h4 class="font-bold text-slate-900 border-l-4 border-blue-600 pl-2">4. Support & Grievances</h4>
                 <p>For any privacy concerns or data requests, contact Director Mr. Ganesh Kumar Gond at <strong>8252880028</strong> or via WhatsApp.</p>
             </div>
             <div class="border-t pt-3 flex justify-end">
-                <button onclick="closePrivacyModal()" class="bg-primary hover:bg-secondary text-white font-bold px-5 py-2 rounded-lg text-xs transition">I Understand & Accept</button>
+                <button onclick="closePrivacyModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition">I Understand & Accept</button>
             </div>
         </div>
     </div>
 
     <!-- Terms & Conditions Modal -->
-    <div id="termsModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl p-6 max-w-xl w-full space-y-4 text-xs text-slate-600 max-h-[85vh] overflow-y-auto shadow-2xl">
-            <div class="flex justify-between items-center border-b pb-2">
-                <h3 class="font-bold text-slate-800 text-sm">Terms & Conditions / नियम और शर्तें</h3>
+    <div id="termsModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 max-w-xl w-full space-y-4 text-xs text-slate-600 max-h-[85vh] overflow-y-auto shadow-2xl border border-slate-200">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-extrabold text-slate-800 text-base">Terms & Conditions / नियम और शर्तें</h3>
                 <button onclick="closeTermsModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="space-y-3 leading-relaxed text-slate-700">
                 <p>By using <strong>Ganesh Digital World Portal</strong> and submitting any application form, you agree to comply with the following terms:</p>
-                <h4 class="font-bold text-slate-900 border-l-2 border-amber-500 pl-2">1. Accuracy of Provided Information</h4>
+                <h4 class="font-bold text-slate-900 border-l-4 border-amber-500 pl-2">1. Accuracy of Provided Information</h4>
                 <p>The applicant is solely responsible for providing true, accurate, and correct personal details and valid supporting documents. Ganesh Digital World is not liable for form rejection due to incorrect customer details.</p>
-                <h4 class="font-bold text-slate-900 border-l-2 border-amber-500 pl-2">2. Application Fee & Non-Refundable Policy</h4>
+                <h4 class="font-bold text-slate-900 border-l-4 border-amber-500 pl-2">2. Application Fee & Non-Refundable Policy</h4>
                 <p>Once an online application form has been submitted and processing is initiated on official Government / State servers, the service and processing fee is strictly <strong>non-refundable</strong>.</p>
-                <h4 class="font-bold text-slate-900 border-l-2 border-amber-500 pl-2">3. Payment Verification & UTR Mandatory</h4>
+                <h4 class="font-bold text-slate-900 border-l-4 border-amber-500 pl-2">3. Payment Verification & UTR Mandatory</h4>
                 <p>All online payments must be verified via valid 12-digit UPI UTR / Transaction Reference Number. Forms submitted without valid payment confirmation will be placed on hold.</p>
-                <h4 class="font-bold text-slate-900 border-l-2 border-amber-500 pl-2">4. Government Portal Processing Timelines</h4>
+                <h4 class="font-bold text-slate-900 border-l-4 border-amber-500 pl-2">4. Government Portal Processing Timelines</h4>
                 <p>Processing times for government certificates (Niwas, Jati, Aay) and services depend on official government timelines (e.g., RTPS Bihar SLAs). Ganesh Digital World acts as an authorized service facilitator and cyber cafe provider.</p>
             </div>
             <div class="border-t pt-3 flex justify-end">
-                <button onclick="closeTermsModal()" class="bg-primary hover:bg-secondary text-white font-bold px-5 py-2 rounded-lg text-xs transition">I Agree to Terms</button>
+                <button onclick="closeTermsModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition">I Agree to Terms</button>
             </div>
         </div>
     </div>
 
     <!-- Disclaimer Modal -->
-    <div id="disclaimerModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl p-6 max-w-xl w-full space-y-4 text-xs text-slate-600 max-h-[85vh] overflow-y-auto shadow-2xl">
-            <div class="flex justify-between items-center border-b pb-2">
-                <h3 class="font-bold text-slate-800 text-sm">Disclaimer / अस्वीकरण</h3>
+    <div id="disclaimerModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 max-w-xl w-full space-y-4 text-xs text-slate-600 max-h-[85vh] overflow-y-auto shadow-2xl border border-slate-200">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-extrabold text-slate-800 text-base">Disclaimer / अस्वीकरण</h3>
                 <button onclick="closeDisclaimerModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="space-y-3 leading-relaxed text-slate-700">
                 <p><strong>Ganesh Digital World</strong> is a digital service cyber cafe portal designed to facilitate online application submissions on behalf of customers for government and academic portals (RTPS Bihar, NSDL/UTIITSL, NVSP, NSP, SSC, etc.).</p>
-                <h4 class="font-bold text-slate-900 border-l-2 border-blue-500 pl-2">1. Non-Government Entity</h4>
+                <h4 class="font-bold text-slate-900 border-l-4 border-purple-500 pl-2">1. Non-Government Entity</h4>
                 <p>We are a private Cyber Cafe & Digital Assistance Center. We do not issue government certificates directly; we only submit applications accurately on official government servers.</p>
-                <h4 class="font-bold text-slate-900 border-l-2 border-blue-500 pl-2">2. Portal Availability & Government Delays</h4>
+                <h4 class="font-bold text-slate-900 border-l-4 border-purple-500 pl-2">2. Portal Availability & Government Delays</h4>
                 <p>Server downtime, technical maintenance, or verification delays by government departments are beyond our control. We provide tracking assistance and valid acknowledgment tokens for all processed forms.</p>
             </div>
             <div class="border-t pt-3 flex justify-end">
-                <button onclick="closeDisclaimerModal()" class="bg-primary hover:bg-secondary text-white font-bold px-5 py-2 rounded-lg text-xs transition">Close</button>
+                <button onclick="closeDisclaimerModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition">Close</button>
             </div>
         </div>
     </div>
@@ -856,11 +942,11 @@
             const res = document.getElementById('trackResult');
             res.classList.remove('hidden');
             if(!val) {
-                res.className = "text-xs p-3 rounded bg-red-50 text-red-700 border";
+                res.className = "text-xs p-3 rounded-xl bg-red-50 text-red-700 border border-red-200 font-bold";
                 res.innerText = "Please enter your Token ID or Mobile Number.";
                 return;
             }
-            res.className = "text-xs p-3 rounded bg-emerald-50 text-emerald-800 border";
+            res.className = "text-xs p-3.5 rounded-xl bg-emerald-50 text-emerald-900 border border-emerald-200 font-medium";
             res.innerText = "Status: Processing - Your application has been received and is being processed on the official Govt / RTPS portal.";
         }
     </script>
