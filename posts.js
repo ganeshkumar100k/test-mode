@@ -1,14 +1,14 @@
 /* ==========================================================================
    ALL POSTS, SERVICES & UNIFIED COMPLETE FORM ENGINE (posts.js)
-   Ganesh Digital World Portal
+   Ganesh Digital World Portal - Updated with PMS Scholarship Module
    ========================================================================== */
 
 // 1. POSTS & NOTICES DATA
 const POSTS_DATA = {
     marqueeNotices: [
+        "🎓 Bihar Post-Matric Scholarship (PMS) 11th, 12th, BA, B.Ed Online Form Active!",
         "🔥 Bihar RTPS Residence, Caste & Income Certificate Online Apply Active!",
         "⚡ SSC GD, Railway Recruitment & Police Online Forms Open",
-        "🎓 Bihar Post-Matric & NSP Scholarship Forms Filling Available Here!",
         "📞 For Any Query Call / WhatsApp: 8252880028.",
         "📲 Share this website with friends."
     ],
@@ -25,15 +25,21 @@ const POSTS_DATA = {
         { id: "job", title: "Bihar Police SI Exam Hall Ticket", tag: "Download", tagClass: "text-slate-400", customTitle: "Bihar Police SI Admit Card" }
     ],
     latestJobs: [
+        { id: "scholarship", title: "Bihar PMS Post-Matric Scholarship (11th, 12th, BA, B.Ed)", tag: "APPLY NOW", tagClass: "bg-purple-100 text-purple-700 font-bold", customTitle: "Bihar PMS Scholarship Application Form" },
         { id: "job", title: "Bihar Police Constable Online Form", tag: "APPLY", tagClass: "bg-emerald-100 text-emerald-600", customTitle: "Bihar Police Constable Form" },
         { id: "job", title: "SSC GD Constable Recruitment 2026", tag: "Active", tagClass: "text-slate-400", customTitle: "SSC GD Constable Form" },
-        { id: "job", title: "Indian Army Agniveer Online Form", tag: "Apply Now", tagClass: "text-slate-400", customTitle: "Indian Army Agniveer Online Form" },
-        { id: "job", title: "Railway Group D Online Form", tag: "Apply Now", tagClass: "text-slate-400", customTitle: "Railway RRB Group D Form" }
+        { id: "job", title: "Indian Army Agniveer Online Form", tag: "Apply Now", tagClass: "text-slate-400", customTitle: "Indian Army Agniveer Online Form" }
     ]  
 };
 
 // 2. PRICING & CONFIGURATION
 const servicePricing = {
+    scholarship: {
+        govt: 0, service: 100, total: 100,
+        title: "PMS Post-Matric Scholarship (11th, 12th, Graduation, B.Ed)",
+        docLabel: "Bonafide Certificate & Fee Structure / रसीद",
+        qrImage: "https://quickchart.io/qr?text=upi%3A%2F%2Fpay%3Fpa%3D8252880028%2540jio%26pn%3DGanesh%2520Digital%2520world%26am%3D100%26cu%3DINR&size=200&format=png"
+    },
     pan: {
         govt: 107, service: 93, total: 200,
         title: "New PAN Card / Correction (पैन कार्ड)",
@@ -75,12 +81,6 @@ const servicePricing = {
         title: "Ayushman / E-Shram Card / आयुष्मान कार्ड",
         docLabel: "Ration Card / PM Letter (राशन कार्ड या पत्र)",
         qrImage: "https://quickchart.io/qr?text=upi%3A%2F%2Fpay%3Fpa%3D8252880028%2540jio%26pn%3DGanesh%2520Digital%2520world%26am%3D60%26cu%3DINR&size=200&format=png"
-    },
-    scholarship: {
-        govt: 0, service: 100, total: 100,
-        title: "Scholarship Form / छात्रवृत्ति आवेदन",
-        docLabel: "Last Passed Marksheet & Fee Receipt (मार्कशीट व रसीद)",
-        qrImage: "https://quickchart.io/qr?text=upi%3A%2F%2Fpay%3Fpa%3D8252880028%2540jio%26pn%3DGanesh%2520Digital%2520world%26am%3D100%26cu%3DINR&size=200&format=png"
     },
     job: {
         govt: 0, service: 60, total: 60,
@@ -149,9 +149,115 @@ function renderDynamicFormByService(customJobTitle = "") {
     let formHTML = "";
 
     // -------------------------------------------------------------
-    // FORM 1: PAN CARD (Strict 10-Digit Mobile Only)
+    // FORM 1: POST-MATRIC SCHOLARSHIP (PMS Bihar - 11th, 12th, BA, B.Ed)
     // -------------------------------------------------------------
-    if (selectedKey === 'pan') {
+    if (selectedKey === 'scholarship') {
+        formHTML = `
+            <div class="bg-purple-50 border border-purple-200 text-purple-900 text-xs p-3.5 rounded-xl font-medium">
+                <i class="fa-solid fa-graduation-cap text-purple-600 mr-1 text-sm"></i> <strong>Bihar PMS Scholarship Form:</strong> 11th, 12th, Graduation (BA/BSc/BCom), B.Ed, Post-Graduation ke chhatra yahan apply karein.
+            </div>
+
+            <!-- Course & College Details -->
+            <div class="bg-gradient-to-r from-purple-50 to-indigo-50/60 p-4 rounded-xl border border-purple-200 space-y-3">
+                <h5 class="text-xs font-black text-purple-900 uppercase tracking-wider flex items-center gap-1.5">
+                    <i class="fa-solid fa-building-columns text-purple-600"></i> Academic & College Info (शैक्षणिक विवरण)
+                </h5>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Course / Class (कक्षा / कोर्स) *</label>
+                        <select id="pmsCourse" class="w-full text-xs p-2.5 border-2 border-purple-200 rounded-lg bg-white focus:outline-none" required>
+                            <option value="11th (Intermediate)">11th (Intermediate Arts/Sci/Com)</option>
+                            <option value="12th (Intermediate)">12th (Intermediate Arts/Sci/Com)</option>
+                            <option value="BA / BSc / BCom">Graduation (BA / BSc / BCom)</option>
+                            <option value="B.Ed / D.El.Ed">B.Ed / D.El.Ed (Teacher Training)</option>
+                            <option value="MA / MSc / MCom">Post Graduation (MA / MSc / MCom)</option>
+                            <option value="Diploma / Polytechnic">Polytechnic / Diploma</option>
+                            <option value="ITI">ITI (All Trades)</option>
+                            <option value="B.Tech / BCA / BBA">B.Tech / BCA / BBA</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Year / Semester (सत्र / सेमेस्टर) *</label>
+                        <select id="pmsSemester" class="w-full text-xs p-2.5 border-2 border-purple-200 rounded-lg bg-white focus:outline-none" required>
+                            <option value="1st Year / 1st-2nd Sem">1st Year / Sem 1-2</option>
+                            <option value="2nd Year / 3rd-4th Sem">2nd Year / Sem 3-4</option>
+                            <option value="3rd Year / 5th-6th Sem">3rd Year / Sem 5-6</option>
+                            <option value="4th Year / 7th-8th Sem">4th Year / Sem 7-8</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">College / School Name (कॉलेज / स्कूल का नाम) *</label>
+                        <input type="text" id="pmsCollegeName" placeholder="e.g. S.N. Sinha College / School Name" class="w-full text-xs p-2.5 border-2 border-purple-200 rounded-lg bg-white focus:outline-none" required>
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Class Roll No / Registration No *</label>
+                        <input type="text" id="pmsRollNo" placeholder="Class Roll No या Reg No" class="w-full text-xs p-2.5 border-2 border-purple-200 rounded-lg bg-white focus:outline-none" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Candidate Personal Details -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Candidate's Full Name / छात्र का नाम *</label>
+                    <input type="text" id="applicantName" placeholder="Full Name as per Marksheet" class="w-full text-xs p-3 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:outline-none" required>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Father's Name / पिता का नाम *</label>
+                    <input type="text" id="fatherName" placeholder="Father's Full Name" class="w-full text-xs p-3 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:outline-none" required>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Category / जाति वर्ग (BC/EBC/SC/ST) *</label>
+                    <select id="pmsCategory" class="w-full text-xs p-3 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:outline-none" required>
+                        <option value="BC (पिछड़ा वर्ग)">BC (Backward Class)</option>
+                        <option value="EBC (अत्यंत पिछड़ा वर्ग)">EBC (Extremely Backward Class)</option>
+                        <option value="SC (अनुसूचित जाति)">SC (Scheduled Caste)</option>
+                        <option value="ST (अनुसूचित जनजाति)">ST (Scheduled Tribe)</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Mobile Number (WhatsApp) / मोबाइल नंबर (10 Digits) *</label>
+                    <input type="tel" id="mobileNumber" maxlength="10" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10)" placeholder="10 Digit WhatsApp Mobile No" class="w-full text-xs p-3 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:outline-none font-semibold tracking-wider" required>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">Full Permanent Address / पूरा पता (गाँव, प्रखंड, जिला, पिनकोड) *</label>
+                <input type="text" id="fullAddress" placeholder="Village, Post Office, Block, District, PIN Code" class="w-full text-xs p-3 border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:outline-none" required>
+            </div>
+        `;
+
+        // Upload Requirements for PMS Scholarship
+        docContainer.innerHTML = `
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">1. Candidate Passport Photo / फोटो (JPG) *</label>
+                <input type="file" id="docPhoto" accept=".jpg,.jpeg,.png" class="w-full text-xs border-2 border-slate-200 rounded-xl p-2 bg-slate-50" required>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">2. Candidate Signature / हस्ताक्षर (JPG) *</label>
+                <input type="file" id="docSign" accept=".jpg,.jpeg,.png" class="w-full text-xs border-2 border-slate-200 rounded-xl p-2 bg-slate-50" required>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">3. College Bonafide Certificate & Fee Receipt / बोनाफाइड व शुल्क रसीद (PDF / JPG) *</label>
+                <input type="file" id="docSupporting" accept=".pdf,.jpg,.jpeg,.png" class="w-full text-xs border-2 border-slate-200 rounded-xl p-2 bg-slate-50" required>
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-700 mb-1">4. Previous Passed Marksheet / Marksheet या पहचान पत्र (PDF / JPG) *</label>
+                <input type="file" id="docAadhaar" accept=".pdf,.jpg,.jpeg,.png" class="w-full text-xs border-2 border-slate-200 rounded-xl p-2 bg-slate-50" required>
+            </div>
+        `;
+    }
+    // -------------------------------------------------------------
+    // FORM 2: PAN CARD (Strict 10-Digit Mobile Only)
+    // -------------------------------------------------------------
+    else if (selectedKey === 'pan') {
         formHTML = `
             <div class="bg-indigo-50 border border-indigo-200 text-indigo-900 text-xs p-3.5 rounded-xl font-medium">
                 <i class="fa-solid fa-id-card text-indigo-600 mr-1"></i> <strong>PAN Card Application:</strong> Sirf apna naam, pita ka naam, mobile number aur janam tithi bharein.
@@ -199,7 +305,7 @@ function renderDynamicFormByService(customJobTitle = "") {
         `;
     } 
     // -------------------------------------------------------------
-    // FORM 2: RTPS BIHAR (Full Address with Strict 10-Digit Mobile)
+    // FORM 3: RTPS BIHAR (Full Address with Strict 10-Digit Mobile)
     // -------------------------------------------------------------
     else if (['residence', 'caste', 'income'].includes(selectedKey)) {
         let extraRTPSFields = "";
@@ -335,7 +441,7 @@ function renderDynamicFormByService(customJobTitle = "") {
         `;
     } 
     // -------------------------------------------------------------
-    // FORM 3: OTHER SERVICES (Strict 10-Digit Mobile)
+    // FORM 4: OTHER SERVICES
     // -------------------------------------------------------------
     else {
         formHTML = `
@@ -523,7 +629,21 @@ async function handleFormSubmit(e) {
         return;
     }
 
-    // 2. PAN Specific Validation
+    // 2. PMS Scholarship Specific Validation
+    if (selectedKey === 'scholarship') {
+        const course = document.getElementById('pmsCourse') ? document.getElementById('pmsCourse').value : "";
+        const semester = document.getElementById('pmsSemester') ? document.getElementById('pmsSemester').value : "";
+        const college = document.getElementById('pmsCollegeName') ? document.getElementById('pmsCollegeName').value.trim() : "";
+        const rollNo = document.getElementById('pmsRollNo') ? document.getElementById('pmsRollNo').value.trim() : "";
+        const address = document.getElementById('fullAddress') ? document.getElementById('fullAddress').value.trim() : "";
+
+        if (!course || !semester || !college || !rollNo || !address) {
+            showNotice("Kripya Scholarship form ke Course, College Name, Roll No aur Full Address ko pura bharein!");
+            return;
+        }
+    }
+
+    // 3. PAN Specific Validation
     if (selectedKey === 'pan') {
         const dob = document.getElementById('dobInput') ? document.getElementById('dobInput').value : "";
         if (!dob) {
@@ -532,7 +652,7 @@ async function handleFormSubmit(e) {
         }
     }
 
-    // 3. RTPS Bihar Address Validation
+    // 4. RTPS Bihar Address Validation
     if (['residence', 'caste', 'income'].includes(selectedKey)) {
         const gender = document.getElementById('applicantGender') ? document.getElementById('applicantGender').value.trim() : "";
         const mother = document.getElementById('motherName') ? document.getElementById('motherName').value.trim() : "";
@@ -550,18 +670,18 @@ async function handleFormSubmit(e) {
         }
     }
 
-    // 4. Document Uploads Validation
+    // 5. Document Uploads Validation
     const photo = document.getElementById('docPhoto') && document.getElementById('docPhoto').files.length;
     const sign = document.getElementById('docSign') && document.getElementById('docSign').files.length;
     const aadhaar = document.getElementById('docAadhaar') && document.getElementById('docAadhaar').files.length;
     const supporting = document.getElementById('docSupporting') && document.getElementById('docSupporting').files.length;
 
     if (!photo || !sign || !aadhaar || !supporting) {
-        showNotice("Kripya sabhi 4 Documents (Photo, Signature, Identification Proof, Supporting Document) upload karein!");
+        showNotice("Kripya sabhi 4 Documents (Photo, Signature, Marksheet/ID Proof, Bonafide/Supporting Document) upload karein!");
         return;
     }
 
-    // 5. Captcha Verification
+    // 6. Captcha Verification
     const userCaptcha = document.getElementById('captchaInput').value.trim().toUpperCase();
     if (userCaptcha !== currentGeneratedCaptcha) {
         showNotice("Security Captcha Code galat hai! Kripya sahi captcha enter karein.");
@@ -569,7 +689,7 @@ async function handleFormSubmit(e) {
         return;
     }
 
-    // 6. Payment UTR & Terms Validation
+    // 7. Payment UTR & Terms Validation
     const utr = document.getElementById('paymentUTR').value.trim();
     const isPaidChecked = document.getElementById('paymentConfirmCheck').checked;
     const isTermsChecked = document.getElementById('termsCheck').checked;
@@ -609,6 +729,14 @@ async function handleFormSubmit(e) {
         const postoffice = document.getElementById('postoffice') ? document.getElementById('postoffice').value : "N/A";
         const wardno = document.getElementById('wardno') ? document.getElementById('wardno').value : "N/A";
         const dob = document.getElementById('dobInput') ? document.getElementById('dobInput').value : "N/A";
+        
+        // Scholarship Specific Fields
+        const pmsCourse = document.getElementById('pmsCourse') ? document.getElementById('pmsCourse').value : "N/A";
+        const pmsSemester = document.getElementById('pmsSemester') ? document.getElementById('pmsSemester').value : "N/A";
+        const pmsCollege = document.getElementById('pmsCollegeName') ? document.getElementById('pmsCollegeName').value : "N/A";
+        const pmsRoll = document.getElementById('pmsRollNo') ? document.getElementById('pmsRollNo').value : "N/A";
+        const pmsCategory = document.getElementById('pmsCategory') ? document.getElementById('pmsCategory').value : "N/A";
+        const fullAddress = document.getElementById('fullAddress') ? document.getElementById('fullAddress').value : "N/A";
 
         // Compress Docs
         const photoRaw = document.getElementById('docPhoto') ? document.getElementById('docPhoto').files[0] : null;
@@ -628,12 +756,20 @@ async function handleFormSubmit(e) {
             `<b>🎫 Token ID:</b> ${randomToken}\n` +
             `<b>📅 Date:</b> ${currentDate}\n` +
             `<b>📌 Service:</b> ${conf.title}\n\n` +
-            `<b>👤 Applicant Details:</b>\n` +
+            `<b>👤 Candidate Details:</b>\n` +
             `• <b>Name:</b> ${name}\n` +
             `• <b>Father Name:</b> ${father}\n` +
-            `• <b>Mobile (WhatsApp):</b> ${mobile}\n`;
+            `• <b>Mobile:</b> ${mobile}\n`;
 
-        if (selectedKey === 'pan') {
+        if (selectedKey === 'scholarship') {
+            telegramText += `\n<b>🎓 Academic & College Details:</b>\n` +
+                `• <b>Course/Class:</b> ${pmsCourse}\n` +
+                `• <b>Semester/Year:</b> ${pmsSemester}\n` +
+                `• <b>College/School:</b> ${pmsCollege}\n` +
+                `• <b>Roll/Reg No:</b> ${pmsRoll}\n` +
+                `• <b>Category:</b> ${pmsCategory}\n` +
+                `• <b>Address:</b> ${fullAddress}\n`;
+        } else if (selectedKey === 'pan') {
             telegramText += `• <b>Date of Birth:</b> ${dob}\n`;
         } else if (['residence', 'caste', 'income'].includes(selectedKey)) {
             telegramText += `• <b>Gender:</b> ${gender}\n` +
@@ -658,8 +794,8 @@ async function handleFormSubmit(e) {
         // Upload All Documents to Telegram
         if (photoFile) await sendTelegramFile(photoFile, `📷 Photo - ${name} (${randomToken})`);
         if (signFile) await sendTelegramFile(signFile, `✍️ Signature - ${name} (${randomToken})`);
-        if (aadhaarFile) await sendTelegramFile(aadhaarFile, `🆔 ID Card - ${name} (${randomToken})`);
-        if (supportingFile) await sendTelegramFile(supportingFile, `📄 Supporting Doc - ${name} (${randomToken})`);
+        if (supportingFile) await sendTelegramFile(supportingFile, `📄 Bonafide/Supporting - ${name} (${randomToken})`);
+        if (aadhaarFile) await sendTelegramFile(aadhaarFile, `🆔 Marksheet/ID Proof - ${name} (${randomToken})`);
 
         // Populate Printable Receipt
         document.getElementById('recToken').innerText = randomToken;
@@ -670,7 +806,7 @@ async function handleFormSubmit(e) {
         document.getElementById('recPaid').innerText = `₹${conf.total}`;
         document.getElementById('recUTR').innerText = utr;
 
-        const waText = encodeURIComponent(`Hello Ganesh Digital World,\nNew Application Form Submitted:\n- Token: ${randomToken}\n- Name: ${name}\n- Service: ${conf.title}\n- Mobile: ${mobile}\n- Total Fee: ₹${conf.total}\n- Payment UTR: ${utr}`);
+        const waText = encodeURIComponent(`Hello Ganesh Digital World,\nNew Scholarship/Service Form Submitted:\n- Token: ${randomToken}\n- Name: ${name}\n- Service: ${conf.title}\n- Mobile: ${mobile}\n- Total Fee: ₹${conf.total}\n- Payment UTR: ${utr}`);
         document.getElementById('whatsappSendBtn').href = `https://wa.me/918252880028?text=${waText}`;
 
         // Switch Screen to Receipt
