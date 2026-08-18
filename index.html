@@ -29,33 +29,64 @@
         }
     </script>
     <style>
+        /* 🌟 Ultra Colorful Animated Mesh Background 🌟 */
         body {
-            transition: background 0.4s ease, color 0.4s ease;
-        }
-        
-        .light body, body:not(.dark) {
-            background: radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-                        radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.15) 0px, transparent 50%),
-                        radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.12) 0px, transparent 50%),
-                        radial-gradient(at 0% 100%, rgba(245, 158, 11, 0.12) 0px, transparent 50%),
-                        #f8fafc;
+            transition: background 0.5s ease, color 0.5s ease;
+            min-height: 100vh;
         }
 
-        .dark body, html.dark {
-            background: radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.25) 0px, transparent 50%),
-                        radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.22) 0px, transparent 50%),
-                        radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.20) 0px, transparent 50%),
-                        radial-gradient(at 0% 100%, rgba(245, 158, 11, 0.18) 0px, transparent 50%),
-                        #0b0f19;
-            color: #f1f5f9;
+        /* DAY (LIGHT) MODE - Rich Vibrant Multi-Color Gradient Mesh */
+        html:not(.dark) body {
+            background-color: #f0f7ff;
+            background-image: 
+                radial-gradient(at 0% 0%, #c7d2fe 0px, transparent 50%),
+                radial-gradient(at 100% 0%, #fbcfe8 0px, transparent 50%),
+                radial-gradient(at 50% 50%, #fed7aa 0px, transparent 50%),
+                radial-gradient(at 100% 100%, #a7f3d0 0px, transparent 50%),
+                radial-gradient(at 0% 100%, #bae6fd 0px, transparent 50%);
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+
+        /* NIGHT (DARK) MODE - Deep Cyber Aurora Mesh */
+        html.dark body {
+            background-color: #070a13;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.45) 0px, transparent 55%),
+                radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.40) 0px, transparent 55%),
+                radial-gradient(at 50% 50%, rgba(139, 92, 246, 0.35) 0px, transparent 55%),
+                radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.38) 0px, transparent 55%),
+                radial-gradient(at 0% 100%, rgba(14, 165, 233, 0.40) 0px, transparent 55%);
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            color: #f8fafc;
+        }
+
+        /* Glassmorphism Frosted Cards so Colors Pop Through */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+        html.dark .glass-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
         }
 
         .hero-bg {
             background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #1e40af 70%, #0d9488 100%);
         }
         .rainbow-border {
-            background: linear-gradient(90deg, #ec4899, #8b5cf6, #3b82f6, #10b981, #f59e0b);
+            background: linear-gradient(90deg, #ec4899, #8b5cf6, #3b82f6, #10b981, #f59e0b, #ec4899);
+            background-size: 200% auto;
+            animation: rainbow 6s linear infinite;
         }
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
         .marquee {
             white-space: nowrap;
             overflow: hidden;
@@ -73,10 +104,12 @@
         .marquee:hover .marquee-content {
             animation-play-state: paused;
         }
+
         .card-glow:hover {
-            box-shadow: 0 15px 35px -5px rgba(59, 130, 246, 0.3), 0 10px 10px -5px rgba(59, 130, 246, 0.15);
-            transform: translateY(-4px);
+            box-shadow: 0 20px 35px -5px rgba(37, 99, 235, 0.35), 0 10px 15px -5px rgba(236, 72, 153, 0.2);
+            transform: translateY(-5px);
         }
+
         @media print {
             body * { visibility: hidden; }
             #printableReceipt, #printableReceipt * { visibility: visible; }
@@ -84,7 +117,7 @@
         }
     </style>
 </head>
-<body class="font-sans min-h-screen flex flex-col relative dark:text-slate-100">
+<body class="font-sans min-h-screen flex flex-col relative">
 
     <!-- Loading Overlay -->
     <div id="loadingOverlay" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-[100] hidden flex flex-col items-center justify-center text-white p-4">
@@ -96,20 +129,20 @@
         <p class="text-xs text-slate-300 mt-1">Please wait while your details & documents are being processed.</p>
     </div>
 
-    <!-- Top Bar -->
-    <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white text-xs md:text-sm py-2.5 px-4 border-b border-indigo-500/20 shadow-sm">
+    <!-- Top Vibrant Bar -->
+    <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white text-xs md:text-sm py-2.5 px-4 border-b border-indigo-500/20 shadow-md">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
             <div class="flex items-center space-x-3">
-                <span class="bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 font-bold px-2 py-0.5 rounded text-[11px] shadow-sm"><i class="fa-solid fa-crown mr-1"></i> DIRECTOR</span>
-                <span class="font-semibold text-slate-200">Mr. Ganesh Kumar Gond</span>
+                <span class="bg-gradient-to-r from-amber-400 to-orange-500 text-slate-950 font-black px-2.5 py-0.5 rounded-md text-[11px] shadow-sm"><i class="fa-solid fa-crown mr-1"></i> DIRECTOR</span>
+                <span class="font-bold text-slate-200">Mr. Ganesh Kumar Gond</span>
                 <span class="hidden md:inline text-indigo-400">|</span>
-                <span class="hidden md:inline text-emerald-400 font-medium"><i class="fa-solid fa-circle-check mr-1 animate-pulse"></i> Govt Authorized Digital Seva Portal</span>
+                <span class="hidden md:inline text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1 animate-pulse"></i> Govt Authorized Digital Seva Portal</span>
             </div>
             <div class="flex items-center space-x-4">
-                <a href="tel:8252880028" class="text-amber-400 font-bold hover:text-amber-300 transition flex items-center">
+                <a href="tel:8252880028" class="text-amber-400 font-extrabold hover:text-amber-300 transition flex items-center">
                     <i class="fa-solid fa-phone-volume mr-1.5 animate-bounce"></i> 8252880028
                 </a>
-                <a href="https://wa.me/918252880028?text=Hello%20Ganesh%20Digital%20World,%20I%20need%20help" target="_blank" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white px-3.5 py-1 rounded-full text-xs font-bold flex items-center shadow-lg shadow-emerald-500/20 transition transform hover:scale-105">
+                <a href="https://wa.me/918252880028?text=Hello%20Ganesh%20Digital%20World,%20I%20need%20help" target="_blank" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white px-4 py-1 rounded-full text-xs font-bold flex items-center shadow-lg shadow-emerald-500/30 transition transform hover:scale-105">
                     <i class="fa-brands fa-whatsapp mr-1.5 text-sm"></i> WhatsApp Support
                 </a>
             </div>
@@ -117,49 +150,38 @@
     </div>
 
     <!-- Main Navigation Header with Real Emblem Logo -->
-    <header class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-lg shadow-blue-900/5 sticky top-0 z-40 border-b border-slate-100 dark:border-slate-800 transition-colors duration-300">
+    <header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg shadow-xl sticky top-0 z-40 border-b border-indigo-100 dark:border-slate-800 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 py-2.5 flex justify-between items-center">
             <div class="flex items-center space-x-3.5 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                 
                 <!-- Realistic Official GDW Vector Emblem Logo -->
-                <div class="w-14 h-14 rounded-full p-0.5 bg-gradient-to-tr from-amber-500 via-yellow-300 to-amber-600 shadow-xl shadow-amber-500/30 transform hover:scale-105 transition duration-300 shrink-0">
+                <div class="w-14 h-14 rounded-full p-0.5 bg-gradient-to-tr from-amber-500 via-yellow-300 to-amber-600 shadow-xl shadow-amber-500/40 transform hover:scale-105 transition duration-300 shrink-0">
                     <svg viewBox="0 0 200 200" class="w-full h-full rounded-full">
                         <defs>
-                            <!-- Radial Background Gradient -->
                             <radialGradient id="gdwBgGrad" cx="50%" cy="50%" r="50%">
                                 <stop offset="0%" stop-color="#1e293b"/>
                                 <stop offset="70%" stop-color="#0f172a"/>
                                 <stop offset="100%" stop-color="#020617"/>
                             </radialGradient>
-                            
-                            <!-- Gold Shield Gradient -->
                             <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" stop-color="#fbbf24"/>
                                 <stop offset="50%" stop-color="#f59e0b"/>
                                 <stop offset="100%" stop-color="#d97706"/>
                             </linearGradient>
-
-                            <!-- Cyber Blue Gradient -->
                             <linearGradient id="cyberBlue" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" stop-color="#38bdf8"/>
                                 <stop offset="100%" stop-color="#0284c7"/>
                             </linearGradient>
-
-                            <!-- Glow Filter -->
                             <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
                                 <feGaussianBlur stdDeviation="2" result="blur" />
                                 <feComposite in="SourceGraphic" in2="blur" operator="over" />
                             </filter>
                         </defs>
 
-                        <!-- Outer Base -->
                         <circle cx="100" cy="100" r="98" fill="url(#gdwBgGrad)" stroke="url(#goldGrad)" stroke-width="4"/>
-                        
-                        <!-- High-Tech Notched Outer Ring -->
                         <circle cx="100" cy="100" r="91" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="6, 3" opacity="0.8"/>
                         <circle cx="100" cy="100" r="86" fill="none" stroke="url(#goldGrad)" stroke-width="1.5"/>
 
-                        <!-- Circular Branding Ring -->
                         <path id="textRingPath" d="M 28,100 A 72,72 0 1,1 172,100 A 72,72 0 1,1 28,100" fill="none"/>
                         <text font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="10.5" fill="#fef08a" letter-spacing="2.2">
                             <textPath href="#textRingPath" startOffset="50%" text-anchor="middle">
@@ -167,47 +189,32 @@
                             </textPath>
                         </text>
 
-                        <!-- Inner Core Circle with Cyber Grid -->
                         <circle cx="100" cy="100" r="63" fill="#090d16" stroke="url(#goldGrad)" stroke-width="2.5"/>
-                        
-                        <!-- Cyber Circuit Traces -->
                         <path d="M 45,100 L 60,100 L 70,110" stroke="#0284c7" stroke-width="1.5" fill="none" opacity="0.6"/>
                         <circle cx="45" cy="100" r="2" fill="#38bdf8"/>
                         <path d="M 155,100 L 140,100 L 130,110" stroke="#0284c7" stroke-width="1.5" fill="none" opacity="0.6"/>
                         <circle cx="155" cy="100" r="2" fill="#38bdf8"/>
 
                         <!-- Central Sacred Ganesha & Trishul Emblem -->
-                        <!-- Sacred Tilak / Trishul Crown -->
                         <path d="M 100,43 L 105,58 L 95,58 Z" fill="#ef4444" filter="url(#goldGlow)"/>
                         <path d="M 88,48 Q 94,56 100,56 Q 106,56 112,48 Q 107,63 100,63 Q 93,63 88,48 Z" fill="url(#goldGrad)"/>
                         <circle cx="100" cy="51" r="2.5" fill="#ffffff"/>
 
-                        <!-- Stylized Lord Ganesha Head / Ear Curves -->
                         <path d="M 76,64 Q 65,75 75,90 Q 82,92 86,83" fill="none" stroke="url(#goldGrad)" stroke-width="3.5" stroke-linecap="round"/>
                         <path d="M 124,64 Q 135,75 125,90 Q 118,92 114,83" fill="none" stroke="url(#goldGrad)" stroke-width="3.5" stroke-linecap="round"/>
-
-                        <!-- Ganesha Forehead & Graceful Trunk -->
                         <path d="M 90,65 Q 100,60 110,65 Q 108,82 108,96 Q 108,110 116,110 Q 123,110 123,103" fill="none" stroke="url(#goldGrad)" stroke-width="4" stroke-linecap="round"/>
                         
-                        <!-- Sacred Golden Modak with Glow -->
                         <circle cx="126" cy="98" r="4.5" fill="#fbbf24" stroke="#d97706" stroke-width="1" filter="url(#goldGlow)"/>
                         <circle cx="127" cy="97" r="1.5" fill="#ffffff"/>
 
-                        <!-- Smart Digital Monogram Plate -->
                         <g transform="translate(0, 8)">
-                            <!-- Base Ribbon / Plate -->
                             <rect x="58" y="118" width="84" height="24" rx="6" fill="url(#cyberBlue)" stroke="#fbbf24" stroke-width="1.8"/>
                             <rect x="62" y="121" width="76" height="18" rx="4" fill="#0a192f"/>
-                            
-                            <!-- GDW Lettering with 3D Depth -->
                             <text x="100" y="135" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-size="14.5" fill="#f8fafc" text-anchor="middle" letter-spacing="3">GDW</text>
-                            
-                            <!-- Small Accent Stars -->
                             <polygon points="68,130 70,134 74,134 71,136 72,140 68,137 64,140 65,136 62,134 66,134" fill="#fbbf24"/>
                             <polygon points="132,130 134,134 138,134 135,136 136,140 132,137 128,140 129,136 126,134 130,134" fill="#fbbf24"/>
                         </g>
 
-                        <!-- Bottom Digital Verification Dots -->
                         <circle cx="92" cy="156" r="2" fill="#38bdf8"/>
                         <circle cx="100" cy="157" r="2.5" fill="#f59e0b"/>
                         <circle cx="108" cy="156" r="2" fill="#38bdf8"/>
@@ -218,38 +225,38 @@
                     <h1 class="text-xl md:text-2xl font-black bg-gradient-to-r from-blue-700 via-indigo-600 to-pink-600 dark:from-blue-400 dark:via-indigo-300 dark:to-pink-400 bg-clip-text text-transparent leading-tight tracking-tight">
                         GANESH DIGITAL WORLD
                     </h1>
-                    <p class="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1">
+                    <p class="text-[11px] font-bold text-slate-600 dark:text-slate-300 uppercase tracking-wider flex items-center gap-1">
                         <span>Digital Seva</span> • <span>Certificates</span> • <span>Cyber Portal</span>
                     </p>
                 </div>
             </div>
             
             <div class="hidden lg:flex items-center space-x-5 font-semibold text-sm">
-                <a href="#jobs-section" class="text-slate-700 dark:text-slate-300 hover:text-blue-600 transition flex items-center gap-1"><i class="fa-solid fa-briefcase text-emerald-500 text-xs"></i> Latest Jobs</a>
-                <a href="#certificates-section" class="text-slate-700 dark:text-slate-300 hover:text-blue-600 transition flex items-center gap-1"><i class="fa-solid fa-certificate text-amber-500 text-xs"></i> Certificates</a>
-                <a href="#idcards-section" class="text-slate-700 dark:text-slate-300 hover:text-blue-600 transition flex items-center gap-1"><i class="fa-solid fa-id-card text-indigo-500 text-xs"></i> ID Cards</a>
-                <a href="#scholarship-section" class="text-slate-700 dark:text-slate-300 hover:text-blue-600 transition flex items-center gap-1"><i class="fa-solid fa-graduation-cap text-purple-500 text-xs"></i> Scholarship</a>
+                <a href="#jobs-section" class="text-slate-700 dark:text-slate-200 hover:text-blue-600 transition flex items-center gap-1"><i class="fa-solid fa-briefcase text-emerald-500 text-xs"></i> Latest Jobs</a>
+                <a href="#certificates-section" class="text-slate-700 dark:text-slate-200 hover:text-blue-600 transition flex items-center gap-1"><i class="fa-solid fa-certificate text-amber-500 text-xs"></i> Certificates</a>
+                <a href="#idcards-section" class="text-slate-700 dark:text-slate-200 hover:text-blue-600 transition flex items-center gap-1"><i class="fa-solid fa-id-card text-indigo-500 text-xs"></i> ID Cards</a>
+                <a href="#scholarship-section" class="text-slate-700 dark:text-slate-200 hover:text-blue-600 transition flex items-center gap-1"><i class="fa-solid fa-graduation-cap text-purple-500 text-xs"></i> Scholarship</a>
                 
                 <button onclick="openCustomerLoginModal()" class="bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 px-3 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition">
                     <i class="fa-solid fa-user-lock text-indigo-600 dark:text-indigo-400"></i> Find Token
                 </button>
                 
-                <button onclick="openTrackModal()" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-3.5 py-1.5 rounded-xl shadow-md shadow-blue-500/20 font-bold text-xs flex items-center transition transform hover:scale-105">
+                <button onclick="openTrackModal()" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-3.5 py-1.5 rounded-xl shadow-md shadow-blue-500/30 font-bold text-xs flex items-center transition transform hover:scale-105">
                     <i class="fa-solid fa-magnifying-glass mr-1.5 text-amber-300"></i> Track
                 </button>
 
                 <!-- Day/Night Mode Switch Button -->
-                <button onclick="toggleThemeMode()" id="themeToggleBtn" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-amber-500 dark:text-yellow-300 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition shadow-inner border border-slate-200 dark:border-slate-700" title="Toggle Day / Night Mode">
+                <button onclick="toggleThemeMode()" id="themeToggleBtn" class="w-10 h-10 rounded-xl bg-white/90 dark:bg-slate-800 text-amber-500 dark:text-yellow-300 hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center justify-center transition shadow-md border border-slate-200 dark:border-slate-700" title="Toggle Day / Night Mode">
                     <i id="themeIcon" class="fa-solid fa-moon text-base"></i>
                 </button>
             </div>
 
             <!-- Mobile Action Bar -->
             <div class="lg:hidden flex items-center gap-2">
-                <button onclick="toggleThemeMode()" class="w-9 h-9 rounded-lg bg-slate-100 dark:bg-slate-800 text-amber-500 dark:text-yellow-300 flex items-center justify-center">
+                <button onclick="toggleThemeMode()" class="w-9 h-9 rounded-lg bg-white/90 dark:bg-slate-800 text-amber-500 dark:text-yellow-300 flex items-center justify-center shadow">
                     <i id="mobileThemeIcon" class="fa-solid fa-moon text-sm"></i>
                 </button>
-                <button onclick="openCustomerLoginModal()" class="bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 text-xs px-2.5 py-2 rounded-lg font-bold">
+                <button onclick="openCustomerLoginModal()" class="bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 text-xs px-2.5 py-2 rounded-lg font-bold shadow-sm">
                     <i class="fa-solid fa-user"></i> Login
                 </button>
                 <button onclick="openTrackModal()" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs px-3 py-2 rounded-lg font-bold shadow-md">
@@ -261,8 +268,8 @@
     </header>
 
     <!-- News Marquee Notice -->
-    <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 text-slate-950 font-bold text-xs md:text-sm py-2.5 px-3 flex items-center shadow-md">
-        <span class="bg-red-600 text-white px-3 py-1 rounded-md font-black uppercase text-[10px] tracking-wider mr-2 shrink-0 shadow-sm flex items-center">
+    <div class="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-500 text-slate-950 font-extrabold text-xs md:text-sm py-2.5 px-3 flex items-center shadow-lg">
+        <span class="bg-red-600 text-white px-3 py-1 rounded-md font-black uppercase text-[10px] tracking-wider mr-2 shrink-0 shadow flex items-center">
             <i class="fa-solid fa-bolt mr-1 animate-pulse"></i> LIVE UPDATES
         </span>
         <div class="marquee w-full">
@@ -274,8 +281,8 @@
 
     <!-- Hero Section -->
     <section class="hero-bg text-white py-12 px-4 relative overflow-hidden shadow-2xl">
-        <div class="absolute -top-24 -left-24 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-pink-500/25 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-cyan-500/25 rounded-full blur-3xl pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
             <div class="max-w-2xl text-center md:text-left">
@@ -301,28 +308,28 @@
             <!-- Highlights -->
             <div class="grid grid-cols-2 gap-4 w-full md:w-auto">
                 <div class="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-lg p-4 rounded-2xl border border-white/20 text-center shadow-lg transform hover:scale-105 transition cursor-pointer" onclick="openCustomerLoginModal()">
-                    <div class="w-12 h-12 mx-auto bg-amber-400/20 rounded-xl flex items-center justify-center text-amber-300 text-2xl mb-2">
+                    <div class="w-12 h-12 mx-auto bg-amber-400/25 rounded-xl flex items-center justify-center text-amber-300 text-2xl mb-2">
                         <i class="fa-solid fa-key"></i>
                     </div>
                     <h5 class="text-xs font-bold text-white">Find Lost Token</h5>
                     <p class="text-[10px] text-blue-200">Login with Mobile No</p>
                 </div>
                 <div class="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-lg p-4 rounded-2xl border border-white/20 text-center shadow-lg transform hover:scale-105 transition">
-                    <div class="w-12 h-12 mx-auto bg-emerald-400/20 rounded-xl flex items-center justify-center text-emerald-300 text-2xl mb-2">
+                    <div class="w-12 h-12 mx-auto bg-emerald-400/25 rounded-xl flex items-center justify-center text-emerald-300 text-2xl mb-2">
                         <i class="fa-solid fa-eye"></i>
                     </div>
                     <h5 class="text-xs font-bold text-white">Live Form Preview</h5>
                     <p class="text-[10px] text-blue-200">Edit Before Payment</p>
                 </div>
                 <div class="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-lg p-4 rounded-2xl border border-white/20 text-center shadow-lg transform hover:scale-105 transition">
-                    <div class="w-12 h-12 mx-auto bg-cyan-400/20 rounded-xl flex items-center justify-center text-cyan-300 text-2xl mb-2">
+                    <div class="w-12 h-12 mx-auto bg-cyan-400/25 rounded-xl flex items-center justify-center text-cyan-300 text-2xl mb-2">
                         <i class="fa-solid fa-qrcode"></i>
                     </div>
                     <h5 class="text-xs font-bold text-white">Easy UPI Pay</h5>
                     <p class="text-[10px] text-blue-200">GPay, PhonePe, Paytm</p>
                 </div>
                 <div class="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-lg p-4 rounded-2xl border border-white/20 text-center shadow-lg transform hover:scale-105 transition">
-                    <div class="w-12 h-12 mx-auto bg-green-400/20 rounded-xl flex items-center justify-center text-green-300 text-2xl mb-2">
+                    <div class="w-12 h-12 mx-auto bg-green-400/25 rounded-xl flex items-center justify-center text-green-300 text-2xl mb-2">
                         <i class="fa-brands fa-whatsapp"></i>
                     </div>
                     <h5 class="text-xs font-bold text-white">WhatsApp Updates</h5>
@@ -335,7 +342,7 @@
     <!-- Main Content Area -->
     <main class="max-w-7xl mx-auto px-4 py-10 flex-grow space-y-12">
 
-        <!-- 3 Main Action Grid -->
+        <!-- 3 Main Action Grid (Frosted Glass Cards) -->
         <section id="jobs-section" class="scroll-mt-24">
             <div class="flex items-center justify-between mb-6">
                 <div>
@@ -343,33 +350,33 @@
                         <span class="w-3 h-8 bg-gradient-to-b from-blue-600 to-indigo-600 rounded-full inline-block"></span>
                         Top Online Portals & Updates
                     </h3>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 ml-5">Latest Exam Results, Hall Tickets & Govt Job Applications</p>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 mt-0.5 ml-5">Latest Exam Results, Hall Tickets & Govt Job Applications</p>
                 </div>
-                <span class="bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-800 flex items-center gap-1">
+                <span class="bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 text-xs font-bold px-3 py-1 rounded-full border border-emerald-300 dark:border-emerald-700 flex items-center gap-1 shadow-sm">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> Live Portal
                 </span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white/90 dark:bg-slate-900/90 rounded-2xl shadow-md border-2 border-red-100 dark:border-red-950/50 overflow-hidden flex flex-col card-glow transition duration-300 backdrop-blur-sm">
-                    <div class="bg-gradient-to-r from-red-600 to-rose-600 text-white p-3.5 font-bold text-center text-base flex items-center justify-center shadow-sm">
+                <div class="glass-card rounded-2xl shadow-lg border-2 border-red-200/80 dark:border-red-900/60 overflow-hidden flex flex-col card-glow transition duration-300">
+                    <div class="bg-gradient-to-r from-red-600 to-rose-600 text-white p-3.5 font-bold text-center text-base flex items-center justify-center shadow-md">
                         <i class="fa-solid fa-square-poll-vertical mr-2 text-lg"></i> RESULT
                     </div>
-                    <ul id="resultsContainer" class="divide-y divide-slate-100 dark:divide-slate-800 flex-grow text-sm"></ul>
+                    <ul id="resultsContainer" class="divide-y divide-slate-200/70 dark:divide-slate-800 flex-grow text-sm"></ul>
                 </div>
 
-                <div class="bg-white/90 dark:bg-slate-900/90 rounded-2xl shadow-md border-2 border-blue-100 dark:border-blue-950/50 overflow-hidden flex flex-col card-glow transition duration-300 backdrop-blur-sm">
-                    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-3.5 font-bold text-center text-base flex items-center justify-center shadow-sm">
+                <div class="glass-card rounded-2xl shadow-lg border-2 border-blue-200/80 dark:border-blue-900/60 overflow-hidden flex flex-col card-glow transition duration-300">
+                    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-3.5 font-bold text-center text-base flex items-center justify-center shadow-md">
                         <i class="fa-solid fa-address-card mr-2 text-lg"></i> ADMIT CARD
                     </div>
-                    <ul id="admitCardsContainer" class="divide-y divide-slate-100 dark:divide-slate-800 flex-grow text-sm"></ul>
+                    <ul id="admitCardsContainer" class="divide-y divide-slate-200/70 dark:divide-slate-800 flex-grow text-sm"></ul>
                 </div>
 
-                <div class="bg-white/90 dark:bg-slate-900/90 rounded-2xl shadow-md border-2 border-emerald-100 dark:border-emerald-950/50 overflow-hidden flex flex-col card-glow transition duration-300 backdrop-blur-sm">
-                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white p-3.5 font-bold text-center text-base flex items-center justify-center shadow-sm">
+                <div class="glass-card rounded-2xl shadow-lg border-2 border-emerald-200/80 dark:border-emerald-900/60 overflow-hidden flex flex-col card-glow transition duration-300">
+                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white p-3.5 font-bold text-center text-base flex items-center justify-center shadow-md">
                         <i class="fa-solid fa-briefcase mr-2 text-lg"></i> LATEST JOBS & SCHOLARSHIPS
                     </div>
-                    <ul id="latestJobsContainer" class="divide-y divide-slate-100 dark:divide-slate-800 flex-grow text-sm"></ul>
+                    <ul id="latestJobsContainer" class="divide-y divide-slate-200/70 dark:divide-slate-800 flex-grow text-sm"></ul>
                 </div>
             </div>
         </section>
@@ -381,56 +388,56 @@
                     <span class="w-3 h-8 bg-gradient-to-b from-amber-500 to-orange-500 rounded-full inline-block"></span>
                     Certificate Services / सरकारी प्रमाण पत्र सेवाएं (RTPS Bihar)
                 </h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400 ml-5">Bihar RTPS Service Plus Online Application Portal</p>
+                <p class="text-xs text-slate-600 dark:text-slate-300 ml-5">Bihar RTPS Service Plus Online Application Portal</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div class="bg-white/90 dark:bg-slate-900/90 p-5 rounded-2xl border-2 border-amber-200/80 dark:border-amber-900/40 shadow-md card-glow transition duration-300 flex flex-col justify-between backdrop-blur-sm">
+                <div class="glass-card p-5 rounded-2xl border-2 border-amber-300/80 dark:border-amber-900/50 shadow-lg card-glow transition duration-300 flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 text-slate-950 rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-amber-500/20">
+                        <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 text-slate-950 rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-amber-500/30">
                             <i class="fa-solid fa-house-user"></i>
                         </div>
                         <h4 class="font-extrabold text-slate-900 dark:text-slate-100 text-base mb-1">Residence Certificate</h4>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 font-medium mb-4">Niwas Praman Patra / निवास प्रमाण पत्र (RTPS Bihar)</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 font-medium mb-4">Niwas Praman Patra / निवास प्रमाण पत्र (RTPS Bihar)</p>
                     </div>
                     <button onclick="openApplyModal('residence')" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black text-xs py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02]">
                         Apply Residence →
                     </button>
                 </div>
 
-                <div class="bg-white/90 dark:bg-slate-900/90 p-5 rounded-2xl border-2 border-blue-200/80 dark:border-blue-900/40 shadow-md card-glow transition duration-300 flex flex-col justify-between backdrop-blur-sm">
+                <div class="glass-card p-5 rounded-2xl border-2 border-blue-300/80 dark:border-blue-900/50 shadow-lg card-glow transition duration-300 flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-blue-500/20">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-blue-500/30">
                             <i class="fa-solid fa-users"></i>
                         </div>
                         <h4 class="font-extrabold text-slate-900 dark:text-slate-100 text-base mb-1">Caste Certificate</h4>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 font-medium mb-4">Jati Praman Patra / जाति प्रमाण पत्र (BC/OBC/SC/ST)</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 font-medium mb-4">Jati Praman Patra / जाति प्रमाण पत्र (BC/OBC/SC/ST)</p>
                     </div>
                     <button onclick="openApplyModal('caste')" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02]">
                         Apply Caste →
                     </button>
                 </div>
 
-                <div class="bg-white/90 dark:bg-slate-900/90 p-5 rounded-2xl border-2 border-emerald-200/80 dark:border-emerald-900/40 shadow-md card-glow transition duration-300 flex flex-col justify-between backdrop-blur-sm">
+                <div class="glass-card p-5 rounded-2xl border-2 border-emerald-300/80 dark:border-emerald-900/50 shadow-lg card-glow transition duration-300 flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-emerald-500/20">
+                        <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-emerald-500/30">
                             <i class="fa-solid fa-indian-rupee-sign"></i>
                         </div>
                         <h4 class="font-extrabold text-slate-900 dark:text-slate-100 text-base mb-1">Income Certificate</h4>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 font-medium mb-4">Aay Praman Patra / आय प्रमाण पत्र (RTPS Bihar)</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 font-medium mb-4">Aay Praman Patra / आय प्रमाण पत्र (RTPS Bihar)</p>
                     </div>
                     <button onclick="openApplyModal('income')" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02]">
                         Apply Income →
                     </button>
                 </div>
 
-                <div class="bg-white/90 dark:bg-slate-900/90 p-5 rounded-2xl border-2 border-purple-200/80 dark:border-purple-900/40 shadow-md card-glow transition duration-300 flex flex-col justify-between backdrop-blur-sm">
+                <div class="glass-card p-5 rounded-2xl border-2 border-purple-300/80 dark:border-purple-900/50 shadow-lg card-glow transition duration-300 flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-purple-500/20">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-purple-500/30">
                             <i class="fa-solid fa-certificate"></i>
                         </div>
                         <h4 class="font-extrabold text-slate-900 dark:text-slate-100 text-base mb-1">Other Certificates</h4>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 font-medium mb-4">Birth, Death & Character Cert. / अन्य प्रमाण पत्र</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 font-medium mb-4">Birth, Death & Character Cert. / अन्य प्रमाण पत्र</p>
                     </div>
                     <button onclick="openApplyModal('other_cert')" class="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02]">
                         Apply Other →
@@ -446,56 +453,56 @@
                     <span class="w-3 h-8 bg-gradient-to-b from-emerald-500 to-teal-500 rounded-full inline-block"></span>
                     ID Card & Digital Identity Services
                 </h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400 ml-5">PAN Card, Voter ID, Identification & Labour Cards</p>
+                <p class="text-xs text-slate-600 dark:text-slate-300 ml-5">PAN Card, Voter ID, Identification & Labour Cards</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div class="bg-white/90 dark:bg-slate-900/90 p-5 rounded-2xl border-2 border-indigo-200/80 dark:border-indigo-900/40 shadow-md card-glow transition duration-300 flex flex-col justify-between backdrop-blur-sm">
+                <div class="glass-card p-5 rounded-2xl border-2 border-indigo-300/80 dark:border-indigo-900/50 shadow-lg card-glow transition duration-300 flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 bg-gradient-to-br from-indigo-600 to-violet-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-indigo-500/20">
+                        <div class="w-12 h-12 bg-gradient-to-br from-indigo-600 to-violet-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-indigo-500/30">
                             <i class="fa-solid fa-id-card"></i>
                         </div>
                         <h4 class="font-extrabold text-slate-900 dark:text-slate-100 text-base mb-1">PAN Card</h4>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 font-medium mb-4">New PAN Card & Correction / नया पैन व सुधार</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 font-medium mb-4">New PAN Card & Correction / नया पैन व सुधार</p>
                     </div>
                     <button onclick="openApplyModal('pan')" class="w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02]">
                         Apply PAN Card →
                     </button>
                 </div>
 
-                <div class="bg-white/90 dark:bg-slate-900/90 p-5 rounded-2xl border-2 border-cyan-200/80 dark:border-cyan-900/40 shadow-md card-glow transition duration-300 flex flex-col justify-between backdrop-blur-sm">
+                <div class="glass-card p-5 rounded-2xl border-2 border-cyan-300/80 dark:border-cyan-900/50 shadow-lg card-glow transition duration-300 flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-cyan-500/20">
+                        <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-cyan-500/30">
                             <i class="fa-solid fa-check-to-slot"></i>
                         </div>
                         <h4 class="font-extrabold text-slate-900 dark:text-slate-100 text-base mb-1">Voter ID Card</h4>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 font-medium mb-4">New Voter & Correction (Form 6/8) / नया व सुधार</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 font-medium mb-4">New Voter & Correction (Form 6/8) / नया व सुधार</p>
                     </div>
                     <button onclick="openApplyModal('voter')" class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02]">
                         Apply Voter ID →
                     </button>
                 </div>
 
-                <div class="bg-white/90 dark:bg-slate-900/90 p-5 rounded-2xl border-2 border-amber-200/80 dark:border-amber-900/40 shadow-md card-glow transition duration-300 flex flex-col justify-between backdrop-blur-sm">
+                <div class="glass-card p-5 rounded-2xl border-2 border-amber-300/80 dark:border-amber-900/50 shadow-lg card-glow transition duration-300 flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-yellow-500 text-slate-950 rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-amber-500/20">
+                        <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-yellow-500 text-slate-950 rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-amber-500/30">
                             <i class="fa-solid fa-fingerprint"></i>
                         </div>
                         <h4 class="font-extrabold text-slate-900 dark:text-slate-100 text-base mb-1">Identification Services</h4>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 font-medium mb-4">Address Correction & Print / डिजिटल पहचान सेवा</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 font-medium mb-4">Address Correction & Print / डिजिटल पहचान सेवा</p>
                     </div>
                     <button onclick="openApplyModal('aadhaar')" class="w-full bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-slate-950 font-bold text-xs py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02]">
                         Update Details →
                     </button>
                 </div>
 
-                <div class="bg-white/90 dark:bg-slate-900/90 p-5 rounded-2xl border-2 border-rose-200/80 dark:border-rose-900/40 shadow-md card-glow transition duration-300 flex flex-col justify-between backdrop-blur-sm">
+                <div class="glass-card p-5 rounded-2xl border-2 border-rose-300/80 dark:border-rose-900/50 shadow-lg card-glow transition duration-300 flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 bg-gradient-to-br from-rose-500 to-pink-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-rose-500/20">
+                        <div class="w-12 h-12 bg-gradient-to-br from-rose-500 to-pink-600 text-white rounded-xl flex items-center justify-center mb-4 text-xl font-bold shadow-md shadow-rose-500/30">
                             <i class="fa-solid fa-heart-pulse"></i>
                         </div>
                         <h4 class="font-extrabold text-slate-900 dark:text-slate-100 text-base mb-1">Ayushman / E-Shram</h4>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 font-medium mb-4">Ayushman & Labour Card / आयुष्मान कार्ड</p>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 font-medium mb-4">Ayushman & Labour Card / आयुष्मान कार्ड</p>
                     </div>
                     <button onclick="openApplyModal('ayushman')" class="w-full bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white font-bold text-xs py-2.5 rounded-xl shadow-md transition transform hover:scale-[1.02]">
                         Apply Ayushman →
@@ -504,10 +511,10 @@
             </div>
         </section>
 
-        <!-- Scholarship Section Banner -->
+        <!-- Scholarship Banner -->
         <section id="scholarship-section" class="scroll-mt-24">
-            <div class="bg-gradient-to-r from-indigo-950 via-purple-900 to-pink-900 text-white rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden border border-purple-500/30">
-                <div class="absolute -right-10 -bottom-10 w-72 h-72 bg-pink-500/20 rounded-full blur-2xl"></div>
+            <div class="bg-gradient-to-r from-indigo-950 via-purple-900 to-pink-900 text-white rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden border border-purple-500/40">
+                <div class="absolute -right-10 -bottom-10 w-72 h-72 bg-pink-500/30 rounded-full blur-2xl"></div>
                 <div class="flex flex-col lg:flex-row justify-between items-center gap-8 relative z-10">
                     <div>
                         <span class="bg-gradient-to-r from-amber-400 to-orange-400 text-slate-950 text-xs font-black px-3.5 py-1.5 rounded-full uppercase shadow-md inline-block">
@@ -516,7 +523,7 @@
                         <h3 class="text-3xl md:text-4xl font-black mt-3 mb-2 tracking-tight">
                             Bihar PMS Post-Matric Scholarship
                         </h3>
-                        <p class="text-purple-200 text-sm max-w-xl leading-relaxed">
+                        <p class="text-purple-200 text-sm max-w-xl leading-relaxed font-medium">
                             11th, 12th, BA, BSc, BCom, B.Ed, Post-Graduation Online Scholarship Apply (छात्रवृत्ति ऑनलाइन फॉर्म).
                         </p>
                     </div>
@@ -529,8 +536,8 @@
 
     </main>
 
-    <!-- Footer with Matching Emblem Logo -->
-    <footer class="bg-slate-950 text-slate-300 text-xs py-10 px-4 mt-auto border-t border-slate-800">
+    <!-- Footer -->
+    <footer class="bg-slate-950/95 text-slate-300 text-xs py-10 px-4 mt-auto border-t border-slate-800">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-800/80">
             <div>
                 <h4 class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-black text-lg mb-3">GANESH DIGITAL WORLD</h4>
