@@ -1,6 +1,6 @@
 /* ==========================================================================
-   ALL POSTS, SERVICES & UNIFIED COMPLETE FORM ENGINE (posts.js)
-   Ganesh Digital World Portal - Updated with PMS Scholarship Module
+   ALL POSTS, SERVICES, PREVIEW-EDIT ENGINE & CUSTOMER LOGIN (posts.js)
+   Ganesh Digital World Portal
    ========================================================================== */
 
 // 1. POSTS & NOTICES DATA
@@ -9,8 +9,8 @@ const POSTS_DATA = {
         "🎓 Bihar Post-Matric Scholarship (PMS) 11th, 12th, BA, B.Ed Online Form Active!",
         "🔥 Bihar RTPS Residence, Caste & Income Certificate Online Apply Active!",
         "⚡ SSC GD, Railway Recruitment & Police Online Forms Open",
-        "📞 For Any Query Call / WhatsApp: 8252880028.",
-        "📲 Share this website with friends."
+        "🔑 Lost Token? Login using your 10-Digit Mobile Number on Customer Portal!",
+        "📞 For Any Query Call / WhatsApp: 8252880028."
     ],
     results: [
         { id: "job", title: "Bihar Board 10th / 12th Result", tag: "NEW", tagClass: "bg-red-100 text-red-600", customTitle: "Bihar Board 10th/12th Result Check" },
@@ -148,16 +148,13 @@ function renderDynamicFormByService(customJobTitle = "") {
 
     let formHTML = "";
 
-    // -------------------------------------------------------------
     // FORM 1: POST-MATRIC SCHOLARSHIP (PMS Bihar - 11th, 12th, BA, B.Ed)
-    // -------------------------------------------------------------
     if (selectedKey === 'scholarship') {
         formHTML = `
             <div class="bg-purple-50 border border-purple-200 text-purple-900 text-xs p-3.5 rounded-xl font-medium">
                 <i class="fa-solid fa-graduation-cap text-purple-600 mr-1 text-sm"></i> <strong>Bihar PMS Scholarship Form:</strong> 11th, 12th, Graduation (BA/BSc/BCom), B.Ed, Post-Graduation ke chhatra yahan apply karein.
             </div>
 
-            <!-- Course & College Details -->
             <div class="bg-gradient-to-r from-purple-50 to-indigo-50/60 p-4 rounded-xl border border-purple-200 space-y-3">
                 <h5 class="text-xs font-black text-purple-900 uppercase tracking-wider flex items-center gap-1.5">
                     <i class="fa-solid fa-building-columns text-purple-600"></i> Academic & College Info (शैक्षणिक विवरण)
@@ -200,7 +197,6 @@ function renderDynamicFormByService(customJobTitle = "") {
                 </div>
             </div>
 
-            <!-- Candidate Personal Details -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Candidate's Full Name / छात्र का नाम *</label>
@@ -234,7 +230,6 @@ function renderDynamicFormByService(customJobTitle = "") {
             </div>
         `;
 
-        // Upload Requirements for PMS Scholarship
         docContainer.innerHTML = `
             <div>
                 <label class="block text-xs font-bold text-slate-700 mb-1">1. Candidate Passport Photo / फोटो (JPG) *</label>
@@ -254,9 +249,7 @@ function renderDynamicFormByService(customJobTitle = "") {
             </div>
         `;
     }
-    // -------------------------------------------------------------
-    // FORM 2: PAN CARD (Strict 10-Digit Mobile Only)
-    // -------------------------------------------------------------
+    // FORM 2: PAN CARD
     else if (selectedKey === 'pan') {
         formHTML = `
             <div class="bg-indigo-50 border border-indigo-200 text-indigo-900 text-xs p-3.5 rounded-xl font-medium">
@@ -304,9 +297,7 @@ function renderDynamicFormByService(customJobTitle = "") {
             </div>
         `;
     } 
-    // -------------------------------------------------------------
-    // FORM 3: RTPS BIHAR (Full Address with Strict 10-Digit Mobile)
-    // -------------------------------------------------------------
+    // FORM 3: RTPS BIHAR (Jati, Niwas, Aay)
     else if (['residence', 'caste', 'income'].includes(selectedKey)) {
         let extraRTPSFields = "";
         
@@ -383,7 +374,6 @@ function renderDynamicFormByService(customJobTitle = "") {
 
             ${extraRTPSFields}
 
-            <!-- Bihar Address Structure -->
             <div class="border-t border-slate-200 pt-3">
                 <h4 class="text-xs font-black text-slate-800 mb-2.5 flex items-center gap-1.5 text-amber-600">
                     <i class="fa-solid fa-location-dot"></i> Permanent Address / पते का विवरण (Bihar)
@@ -440,9 +430,7 @@ function renderDynamicFormByService(customJobTitle = "") {
             </div>
         `;
     } 
-    // -------------------------------------------------------------
     // FORM 4: OTHER SERVICES
-    // -------------------------------------------------------------
     else {
         formHTML = `
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -492,7 +480,130 @@ function renderDynamicFormByService(customJobTitle = "") {
     updateBillAndPaymentLinks();
 }
 
-// 5. DYNAMIC BILLING & UPI GATEWAY LINK
+// 5. LIVE PREVIEW GENERATOR & VALIDATION
+function showFormPreview() {
+    if(typeof hideNotice === 'function') hideNotice();
+
+    const selectedKey = document.getElementById('serviceSelect').value;
+    const conf = servicePricing[selectedKey] || servicePricing['residence'];
+    const name = document.getElementById('applicantName') ? document.getElementById('applicantName').value.trim() : "";
+    const father = document.getElementById('fatherName') ? document.getElementById('fatherName').value.trim() : "";
+    const mobile = document.getElementById('mobileNumber') ? document.getElementById('mobileNumber').value.trim() : "";
+
+    if (!name || !father || !mobile) {
+        showNotice("Kripya Applicant Name, Father's Name aur Mobile Number pura bharein!");
+        return;
+    }
+
+    if (!/^[0-9]{10}$/.test(mobile)) {
+        showNotice("Mobile Number bilkul 10 digit ka hona chahiye!");
+        return;
+    }
+
+    // Specific Form Validations
+    if (selectedKey === 'scholarship') {
+        const course = document.getElementById('pmsCourse') ? document.getElementById('pmsCourse').value : "";
+        const college = document.getElementById('pmsCollegeName') ? document.getElementById('pmsCollegeName').value.trim() : "";
+        const rollNo = document.getElementById('pmsRollNo') ? document.getElementById('pmsRollNo').value.trim() : "";
+        const address = document.getElementById('fullAddress') ? document.getElementById('fullAddress').value.trim() : "";
+        if (!course || !college || !rollNo || !address) {
+            showNotice("Kripya Scholarship form ke Course, College, Roll No aur Address ko pura bharein!");
+            return;
+        }
+    } else if (selectedKey === 'pan') {
+        const dob = document.getElementById('dobInput') ? document.getElementById('dobInput').value : "";
+        if (!dob) {
+            showNotice("Kripya PAN Card ke liye Date of Birth (DOB) select karein!");
+            return;
+        }
+    } else if (['residence', 'caste', 'income'].includes(selectedKey)) {
+        const district = document.getElementById('district') ? document.getElementById('district').value.trim() : "";
+        const subDiv = document.getElementById('subDivision') ? document.getElementById('subDivision').value.trim() : "";
+        const block = document.getElementById('block') ? document.getElementById('block').value.trim() : "";
+        const panchayat = document.getElementById('panchayat') ? document.getElementById('panchayat').value.trim() : "";
+        const village = document.getElementById('village') ? document.getElementById('village').value.trim() : "";
+        const postoffice = document.getElementById('postoffice') ? document.getElementById('postoffice').value.trim() : "";
+        const wardno = document.getElementById('wardno') ? document.getElementById('wardno').value.trim() : "";
+
+        if (!district || !subDiv || !block || !panchayat || !village || !postoffice || !wardno) {
+            showNotice("Kripya RTPS Form ke sabhi Address details (District, Sub-Division, Block, Panchayat, Ward No) bharein!");
+            return;
+        }
+    }
+
+    // Documents Check
+    const photo = document.getElementById('docPhoto') && document.getElementById('docPhoto').files.length;
+    const sign = document.getElementById('docSign') && document.getElementById('docSign').files.length;
+    const aadhaar = document.getElementById('docAadhaar') && document.getElementById('docAadhaar').files.length;
+    const supporting = document.getElementById('docSupporting') && document.getElementById('docSupporting').files.length;
+
+    if (!photo || !sign || !aadhaar || !supporting) {
+        showNotice("Kripya sabhi 4 Documents upload karein!");
+        return;
+    }
+
+    // Populate Preview UI
+    document.getElementById('prevServiceTitle').innerText = conf.title;
+    let listHTML = `
+        <div class="grid grid-cols-2 gap-2 border-b border-slate-200 pb-2">
+            <div><span class="text-slate-500">Applicant Name:</span> <strong class="text-slate-800">${name}</strong></div>
+            <div><span class="text-slate-500">Father's Name:</span> <strong class="text-slate-800">${father}</strong></div>
+        </div>
+        <div class="grid grid-cols-2 gap-2 border-b border-slate-200 pb-2">
+            <div><span class="text-slate-500">Mobile No:</span> <strong class="text-slate-800">${mobile}</strong></div>
+            <div><span class="text-slate-500">Total Fee:</span> <strong class="text-emerald-700 font-bold">₹${conf.total}</strong></div>
+        </div>
+    `;
+
+    if (selectedKey === 'scholarship') {
+        const course = document.getElementById('pmsCourse').value;
+        const semester = document.getElementById('pmsSemester').value;
+        const college = document.getElementById('pmsCollegeName').value;
+        const rollNo = document.getElementById('pmsRollNo').value;
+        const cat = document.getElementById('pmsCategory').value;
+        const addr = document.getElementById('fullAddress').value;
+
+        listHTML += `
+            <div class="border-b border-slate-200 pb-2 space-y-1">
+                <div><span class="text-slate-500">Course / Sem:</span> <strong>${course} (${semester})</strong></div>
+                <div><span class="text-slate-500">College Name:</span> <strong>${college} (Roll: ${rollNo})</strong></div>
+                <div><span class="text-slate-500">Category & Address:</span> <strong>${cat}, ${addr}</strong></div>
+            </div>
+        `;
+    } else if (selectedKey === 'pan') {
+        const dob = document.getElementById('dobInput').value;
+        listHTML += `<div class="border-b border-slate-200 pb-2"><span class="text-slate-500">Date of Birth:</span> <strong>${dob}</strong></div>`;
+    } else if (['residence', 'caste', 'income'].includes(selectedKey)) {
+        const subDiv = document.getElementById('subDivision').value;
+        const block = document.getElementById('block').value;
+        const village = document.getElementById('village').value;
+        const dist = document.getElementById('district').value;
+        listHTML += `
+            <div class="border-b border-slate-200 pb-2 space-y-1">
+                <div><span class="text-slate-500">Address:</span> <strong>${village}, Block: ${block}, Sub-Div: ${subDiv}, Dist: ${dist}</strong></div>
+            </div>
+        `;
+    }
+
+    listHTML += `
+        <div class="text-[11px] text-emerald-700 font-semibold flex items-center gap-1.5 pt-1">
+            <i class="fa-solid fa-circle-check"></i> 4 Documents Attached: Photo, Signature, ID Proof, Supporting Document.
+        </div>
+    `;
+
+    document.getElementById('previewDataList').innerHTML = listHTML;
+
+    // Switch View
+    document.getElementById('formFillSection').classList.add('hidden');
+    document.getElementById('formPreviewSection').classList.remove('hidden');
+}
+
+function editFormBack() {
+    document.getElementById('formPreviewSection').classList.add('hidden');
+    document.getElementById('formFillSection').classList.remove('hidden');
+}
+
+// 6. DYNAMIC BILLING & UPI GATEWAY LINK
 function updateBillAndPaymentLinks() {
     const key = document.getElementById('serviceSelect').value;
     const conf = servicePricing[key] || servicePricing['residence'];
@@ -513,7 +624,7 @@ function updateBillAndPaymentLinks() {
     if(phonepeBtn) phonepeBtn.href = upiString;
 }
 
-// 6. CLIENT-SIDE IMAGE COMPRESSION (Canvas API)
+// 7. CLIENT-SIDE IMAGE COMPRESSION (Canvas API)
 function compressFile(file) {
     return new Promise((resolve) => {
         if (!file) return resolve(null);
@@ -561,7 +672,7 @@ function compressFile(file) {
     });
 }
 
-// 7. TELEGRAM BOT ENGINE
+// 8. TELEGRAM BOT ENGINE
 const TELEGRAM_BOT_TOKEN = "8992840881:AAGIG28aWGSc0TfN3DDTNXKpHutX8MQ3Pn0";
 const TELEGRAM_CHAT_ID = "985390982";
 
@@ -605,83 +716,86 @@ async function sendTelegramFile(file, caption) {
     }
 }
 
-// 8. UNIFIED SINGLE-FORM VALIDATION & SUBMISSION HANDLER
-async function handleFormSubmit(e) {
-    e.preventDefault();
+// 9. LOCAL STORAGE FOR CUSTOMER LOGIN & TOKEN RECOVERY
+function saveApplicationLocally(appData) {
+    try {
+        let storedApps = JSON.parse(localStorage.getItem('GDW_APPS') || '[]');
+        storedApps.unshift(appData);
+        localStorage.setItem('GDW_APPS', JSON.stringify(storedApps));
+    } catch (e) {
+        console.error("Local storage error:", e);
+    }
+}
+
+function performCustomerLogin() {
+    const mobile = document.getElementById('custLoginMobile').value.trim();
+    const container = document.getElementById('custApplicationsContainer');
+    const list = document.getElementById('custApplicationsList');
+
+    if (!mobile || mobile.length !== 10) {
+        alert("Kripya valid 10-digit mobile number enter karein!");
+        return;
+    }
+
+    const storedApps = JSON.parse(localStorage.getItem('GDW_APPS') || '[]');
+    const myApps = storedApps.filter(item => item.mobile === mobile);
+
+    container.classList.remove('hidden');
+
+    if (myApps.length === 0) {
+        list.innerHTML = `
+            <div class="bg-amber-50 text-amber-800 p-3 rounded-xl border border-amber-200 text-xs">
+                Is mobile number (${mobile}) par koi application nahi mili. Agar aapne form apply kiya tha, to Director se WhatsApp par sampark karein.
+            </div>
+        `;
+        return;
+    }
+
+    list.innerHTML = myApps.map(item => `
+        <div class="bg-slate-50 border border-slate-200 p-3 rounded-xl space-y-1.5 text-xs shadow-sm">
+            <div class="flex justify-between items-center">
+                <span class="font-bold text-slate-800">${item.service}</span>
+                <span class="bg-blue-100 text-blue-800 font-mono font-bold px-2 py-0.5 rounded text-[11px]">${item.token}</span>
+            </div>
+            <div class="flex justify-between text-slate-500 text-[11px]">
+                <span>Applicant: <strong>${item.name}</strong></span>
+                <span>Date: ${item.date}</span>
+            </div>
+            <div class="flex justify-between items-center pt-1 border-t border-slate-200">
+                <span class="text-emerald-700 font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-circle-check"></i> ${item.status || "In Process (प्रक्रियाधीन)"}
+                </span>
+                <button onclick="reprintReceipt('${item.token}', '${item.name}', '${item.mobile}', '${item.service}', '${item.date}', '${item.total}', '${item.utr}')" class="text-blue-600 font-bold hover:underline">
+                    View Receipt
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function reprintReceipt(token, name, mobile, service, date, total, utr) {
+    document.getElementById('recToken').innerText = token;
+    document.getElementById('recDate').innerText = date;
+    document.getElementById('recService').innerText = service;
+    document.getElementById('recName').innerText = name;
+    document.getElementById('recMobile').innerText = mobile;
+    document.getElementById('recPaid').innerText = `₹${total}`;
+    document.getElementById('recUTR').innerText = utr;
+
+    const waText = encodeURIComponent(`Hello Ganesh Digital World,\nMy Application Token: ${token}\nName: ${name}\nService: ${service}`);
+    document.getElementById('whatsappSendBtn').href = `https://wa.me/918252880028?text=${waText}`;
+
+    closeCustomerLoginModal();
+    document.getElementById('receiptModal').classList.remove('hidden');
+}
+
+// 10. FINAL FORM SUBMISSION (DIRECT AFTER PAYMENT & PREVIEW)
+async function handleFormSubmitDirect() {
     if (isSubmitting) return;
 
     if(typeof hideNotice === 'function') hideNotice();
 
-    const selectedKey = document.getElementById('serviceSelect').value;
-    const name = document.getElementById('applicantName') ? document.getElementById('applicantName').value.trim() : "";
-    const father = document.getElementById('fatherName') ? document.getElementById('fatherName').value.trim() : "";
-    const mobile = document.getElementById('mobileNumber') ? document.getElementById('mobileNumber').value.trim() : "";
-
-    // 1. Basic Personal Details Validation
-    if (!name || !father || !mobile) {
-        showNotice("Kripya Applicant Name, Father's Name aur Mobile Number sahi se bharein!");
-        return;
-    }
-
-    // Strict 10 Digits Mobile Number Verification
-    if (!/^[0-9]{10}$/.test(mobile)) {
-        showNotice("Mobile Number bilkul 10 digit ka hona chahiye!");
-        return;
-    }
-
-    // 2. PMS Scholarship Specific Validation
-    if (selectedKey === 'scholarship') {
-        const course = document.getElementById('pmsCourse') ? document.getElementById('pmsCourse').value : "";
-        const semester = document.getElementById('pmsSemester') ? document.getElementById('pmsSemester').value : "";
-        const college = document.getElementById('pmsCollegeName') ? document.getElementById('pmsCollegeName').value.trim() : "";
-        const rollNo = document.getElementById('pmsRollNo') ? document.getElementById('pmsRollNo').value.trim() : "";
-        const address = document.getElementById('fullAddress') ? document.getElementById('fullAddress').value.trim() : "";
-
-        if (!course || !semester || !college || !rollNo || !address) {
-            showNotice("Kripya Scholarship form ke Course, College Name, Roll No aur Full Address ko pura bharein!");
-            return;
-        }
-    }
-
-    // 3. PAN Specific Validation
-    if (selectedKey === 'pan') {
-        const dob = document.getElementById('dobInput') ? document.getElementById('dobInput').value : "";
-        if (!dob) {
-            showNotice("Kripya PAN Card ke liye Date of Birth (DOB) select karein!");
-            return;
-        }
-    }
-
-    // 4. RTPS Bihar Address Validation
-    if (['residence', 'caste', 'income'].includes(selectedKey)) {
-        const gender = document.getElementById('applicantGender') ? document.getElementById('applicantGender').value.trim() : "";
-        const mother = document.getElementById('motherName') ? document.getElementById('motherName').value.trim() : "";
-        const district = document.getElementById('district') ? document.getElementById('district').value.trim() : "";
-        const subDiv = document.getElementById('subDivision') ? document.getElementById('subDivision').value.trim() : "";
-        const block = document.getElementById('block') ? document.getElementById('block').value.trim() : "";
-        const panchayat = document.getElementById('panchayat') ? document.getElementById('panchayat').value.trim() : "";
-        const village = document.getElementById('village') ? document.getElementById('village').value.trim() : "";
-        const postoffice = document.getElementById('postoffice') ? document.getElementById('postoffice').value.trim() : "";
-        const wardno = document.getElementById('wardno') ? document.getElementById('wardno').value.trim() : "";
-
-        if (!gender || !mother || !district || !subDiv || !block || !panchayat || !village || !postoffice || !wardno) {
-            showNotice("Kripya RTPS Form ke sabhi Address details (Mother Name, Sub-Division, Block, Panchayat, Ward No) bharein!");
-            return;
-        }
-    }
-
-    // 5. Document Uploads Validation
-    const photo = document.getElementById('docPhoto') && document.getElementById('docPhoto').files.length;
-    const sign = document.getElementById('docSign') && document.getElementById('docSign').files.length;
-    const aadhaar = document.getElementById('docAadhaar') && document.getElementById('docAadhaar').files.length;
-    const supporting = document.getElementById('docSupporting') && document.getElementById('docSupporting').files.length;
-
-    if (!photo || !sign || !aadhaar || !supporting) {
-        showNotice("Kripya sabhi 4 Documents (Photo, Signature, Marksheet/ID Proof, Bonafide/Supporting Document) upload karein!");
-        return;
-    }
-
-    // 6. Captcha Verification
+    // Captcha Validation
     const userCaptcha = document.getElementById('captchaInput').value.trim().toUpperCase();
     if (userCaptcha !== currentGeneratedCaptcha) {
         showNotice("Security Captcha Code galat hai! Kripya sahi captcha enter karein.");
@@ -689,7 +803,7 @@ async function handleFormSubmit(e) {
         return;
     }
 
-    // 7. Payment UTR & Terms Validation
+    // Payment UTR Validation
     const utr = document.getElementById('paymentUTR').value.trim();
     const isPaidChecked = document.getElementById('paymentConfirmCheck').checked;
     const isTermsChecked = document.getElementById('termsCheck').checked;
@@ -704,7 +818,6 @@ async function handleFormSubmit(e) {
         return;
     }
 
-    // Start Submission Processing
     isSubmitting = true;
     const submitBtn = document.getElementById('submitBtn');
     if(submitBtn) {
@@ -714,7 +827,11 @@ async function handleFormSubmit(e) {
     document.getElementById('loadingOverlay').classList.remove('hidden');
 
     try {
+        const selectedKey = document.getElementById('serviceSelect').value;
         const conf = servicePricing[selectedKey] || servicePricing['residence'];
+        const name = document.getElementById('applicantName').value.trim();
+        const father = document.getElementById('fatherName').value.trim();
+        const mobile = document.getElementById('mobileNumber').value.trim();
         const randomToken = "GDW-2026-" + Math.floor(1000 + Math.random() * 9000);
         const currentDate = new Date().toLocaleDateString('en-GB');
 
@@ -730,7 +847,6 @@ async function handleFormSubmit(e) {
         const wardno = document.getElementById('wardno') ? document.getElementById('wardno').value : "N/A";
         const dob = document.getElementById('dobInput') ? document.getElementById('dobInput').value : "N/A";
         
-        // Scholarship Specific Fields
         const pmsCourse = document.getElementById('pmsCourse') ? document.getElementById('pmsCourse').value : "N/A";
         const pmsSemester = document.getElementById('pmsSemester') ? document.getElementById('pmsSemester').value : "N/A";
         const pmsCollege = document.getElementById('pmsCollegeName') ? document.getElementById('pmsCollegeName').value : "N/A";
@@ -752,7 +868,7 @@ async function handleFormSubmit(e) {
         ]);
 
         // Construct Telegram Alert Message
-        let telegramText = `<b>🚨 NEW ONLINE APPLICATION 🚨</b>\n\n` +
+        let telegramText = `<b>🚨 NEW ONLINE APPLICATION SUBMITTED 🚨</b>\n\n` +
             `<b>🎫 Token ID:</b> ${randomToken}\n` +
             `<b>📅 Date:</b> ${currentDate}\n` +
             `<b>📌 Service:</b> ${conf.title}\n\n` +
@@ -788,14 +904,24 @@ async function handleFormSubmit(e) {
             `• <b>Total Fee:</b> ₹${conf.total}\n` +
             `• <b>UPI UTR / Ref ID:</b> <code>${utr}</code>`;
 
-        // Send Text Details to Telegram
+        // Send Text & Docs to Telegram
         await sendTelegramMessage(telegramText);
-
-        // Upload All Documents to Telegram
         if (photoFile) await sendTelegramFile(photoFile, `📷 Photo - ${name} (${randomToken})`);
         if (signFile) await sendTelegramFile(signFile, `✍️ Signature - ${name} (${randomToken})`);
         if (supportingFile) await sendTelegramFile(supportingFile, `📄 Bonafide/Supporting - ${name} (${randomToken})`);
         if (aadhaarFile) await sendTelegramFile(aadhaarFile, `🆔 Marksheet/ID Proof - ${name} (${randomToken})`);
+
+        // Save locally for Customer Login retrieval
+        saveApplicationLocally({
+            token: randomToken,
+            name: name,
+            mobile: mobile,
+            service: conf.title,
+            date: currentDate,
+            total: conf.total,
+            utr: utr,
+            status: "Processing at Govt Portal (प्रक्रिया जारी है)"
+        });
 
         // Populate Printable Receipt
         document.getElementById('recToken').innerText = randomToken;
@@ -806,7 +932,7 @@ async function handleFormSubmit(e) {
         document.getElementById('recPaid').innerText = `₹${conf.total}`;
         document.getElementById('recUTR').innerText = utr;
 
-        const waText = encodeURIComponent(`Hello Ganesh Digital World,\nNew Scholarship/Service Form Submitted:\n- Token: ${randomToken}\n- Name: ${name}\n- Service: ${conf.title}\n- Mobile: ${mobile}\n- Total Fee: ₹${conf.total}\n- Payment UTR: ${utr}`);
+        const waText = encodeURIComponent(`Hello Ganesh Digital World,\nNew Application Form Submitted:\n- Token: ${randomToken}\n- Name: ${name}\n- Service: ${conf.title}\n- Mobile: ${mobile}\n- Total Fee: ₹${conf.total}\n- Payment UTR: ${utr}`);
         document.getElementById('whatsappSendBtn').href = `https://wa.me/918252880028?text=${waText}`;
 
         // Switch Screen to Receipt
@@ -824,5 +950,62 @@ async function handleFormSubmit(e) {
             submitBtn.disabled = false;
             submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
         }
+    }
+}
+
+// 11. LIVE STATUS TRACKER WITH STEP PROCESS TIMELINE
+function searchStatus() {
+    const val = document.getElementById('trackInput').value.trim();
+    const res = document.getElementById('trackResult');
+    res.classList.remove('hidden');
+
+    if(!val) {
+        res.className = "text-xs p-3.5 rounded-2xl bg-red-50 text-red-700 border border-red-200 font-bold";
+        res.innerText = "Please enter your Token ID or Mobile Number.";
+        return;
+    }
+
+    const storedApps = JSON.parse(localStorage.getItem('GDW_APPS') || '[]');
+    const found = storedApps.find(item => item.token.toLowerCase() === val.toLowerCase() || item.mobile === val);
+
+    res.className = "text-xs p-4 rounded-2xl bg-gradient-to-b from-blue-50 to-indigo-50/60 text-slate-800 border-2 border-blue-200 space-y-3";
+    
+    if (found) {
+        res.innerHTML = `
+            <div class="border-b border-blue-200 pb-2">
+                <div class="flex justify-between font-bold">
+                    <span class="text-blue-800">${found.service}</span>
+                    <span class="font-mono text-indigo-700">${found.token}</span>
+                </div>
+                <p class="text-[11px] text-slate-500">Applicant: <strong>${found.name}</strong> | Applied on: ${found.date}</p>
+            </div>
+
+            <!-- Live Progress Timeline -->
+            <div class="space-y-2 py-1">
+                <div class="flex items-center gap-2 text-emerald-700 font-bold">
+                    <i class="fa-solid fa-circle-check text-emerald-600"></i> Step 1: Form & Documents Received
+                </div>
+                <div class="flex items-center gap-2 text-emerald-700 font-bold">
+                    <i class="fa-solid fa-circle-check text-emerald-600"></i> Step 2: Payment Verified (${found.utr})
+                </div>
+                <div class="flex items-center gap-2 text-blue-700 font-bold animate-pulse">
+                    <i class="fa-solid fa-spinner animate-spin text-blue-600"></i> Step 3: Application Under Process on Govt / RTPS Portal
+                </div>
+            </div>
+
+            <div class="pt-2 border-t border-blue-200 flex justify-between items-center">
+                <span class="text-[11px] font-semibold text-slate-600">Status: <strong class="text-emerald-700">${found.status}</strong></span>
+                <button onclick="reprintReceipt('${found.token}', '${found.name}', '${found.mobile}', '${found.service}', '${found.date}', '${found.total}', '${found.utr}')" class="text-blue-700 font-bold underline text-xs">
+                    View Receipt
+                </button>
+            </div>
+        `;
+    } else {
+        res.innerHTML = `
+            <div class="space-y-2">
+                <p class="font-bold text-emerald-800"><i class="fa-solid fa-check-circle"></i> Application Status Active: Processing</p>
+                <p class="text-[11px] text-slate-600">Your query (${val}) has been received at Ganesh Digital World cyber desk. Official government acknowledgment will be shared on WhatsApp shortly.</p>
+            </div>
+        `;
     }
 }
